@@ -1,0 +1,28 @@
+{
+  "name": "bulma-stylus",
+  "version": "0.3.1",
+  "homepage": "http://github.com/groenroos/bulma-stylus",
+  "authors": [
+    "jgthms <bbxdesign@gmail.com>",
+    "groenroos <oskari@groenroos.fi>"
+  ],
+  "description": "Modern CSS framework based on Flexbox (Stylus)",
+  "main": "bulma.styl",
+  "keywords": [
+    "css",
+    "stylus",
+    "flexbox",
+    "responsive",
+    "framework"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs",
+    "images"
+  ]
+}
