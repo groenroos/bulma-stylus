@@ -164,6 +164,9 @@ button-large()
           background-color color
           border-color color
           color color-invert
+        &.is-loading
+          &:after
+            border-color: transparent transparent color color !important
       &.is-inverted.is-outlined
         background-color transparent
         border-color color-invert
