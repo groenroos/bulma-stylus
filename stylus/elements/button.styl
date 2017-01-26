@@ -28,45 +28,45 @@ buttonIconSpacing(button-font-size, icon-width)
   return difference / 2
 
 button-icon(button-font-size)
-  small-offset = buttonIconSpacing(button-font-size, 1rem)
-  normal-offset = buttonIconSpacing(button-font-size, 1.5rem)
-  medium-offset = buttonIconSpacing(button-font-size, 2rem)
-  large-offset = buttonIconSpacing(button-font-size, 3rem)
+  $small-offset = buttonIconSpacing(button-font-size, 1rem)
+  $normal-offset = buttonIconSpacing(button-font-size, 1.5rem)
+  $medium-offset = buttonIconSpacing(button-font-size, 2rem)
+  $large-offset = buttonIconSpacing(button-font-size, 3rem)
   .icon
     &:first-child:not(:last-child)
-      margin-left normal-offset
+      margin-left $normal-offset
       margin-right button-font-size / 2
     &:last-child:not(:first-child)
       margin-left button-font-size / 2
-      margin-right normal-offset
+      margin-right $normal-offset
     &:first-child:last-child
       // The -1px is to account for the button 1px border
-      margin-left calc(-1px + normal-offset)
-      margin-right calc(-1px + normal-offset)
+      margin-left "calc(-1px + %s)" % $normal-offset
+      margin-right "calc(-1px + %s)" % $normal-offset
     &.is-small
       &:first-child:not(:last-child)
-        margin-left small-offset
+        margin-left $small-offset
       &:last-child:not(:first-child)
-        margin-right small-offset
+        margin-right $small-offset
       &:first-child:last-child
-        margin-left calc(-1px + small-offset)
-        margin-right calc(-1px + small-offset)
+        margin-left "calc(-1px + %s)" % $small-offset
+        margin-right "calc(-1px + %s)" % $small-offset
     &.is-medium
       &:first-child:not(:last-child)
-        margin-left medium-offset
+        margin-left $medium-offset
       &:last-child:not(:first-child)
-        margin-right medium-offset
+        margin-right $medium-offset
       &:first-child:last-child
-        margin-left calc(-1px + medium-offset)
-        margin-right calc(-1px + medium-offset)
+        margin-left "calc(-1px + %s)" % $medium-offset
+        margin-right "calc(-1px + %s)" % $medium-offset
     &.is-large
       &:first-child:not(:last-child)
-        margin-left large-offset
+        margin-left $large-offset
       &:last-child:not(:first-child)
-        margin-right large-offset
+        margin-right $large-offset
       &:first-child:last-child
-        margin-left calc(-1px + large-offset)
-        margin-right calc(-1px + large-offset)
+        margin-left "calc(-1px + %s)" % $large-offset
+        margin-right "calc(-1px + %s)" % $large-offset
 
 // The button sizes use mixins so they can be used at different breakpoints
 button-small()
@@ -145,7 +145,7 @@ button-large()
       &.is-active
         background-color darken(color, 5%)
         border-color transparent
-        box-shadow button-shadow-inset
+        box-shadow $button-shadow-inset
         color color-invert
       &.is-inverted
         background-color color-invert

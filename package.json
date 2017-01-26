@@ -31,10 +31,10 @@
   },
   "scripts": {
     "build": "npm run build-clean && npm run build-stylus && npm run build-autoprefix",
-    "build-autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
-    "build-clean": "rm -rf css",
-    "build-stylus": "stylus bulma.styl -o css/bulma.css",
-    "start": "stylus -w bulma.styl -o css/bulma.css"
+    "build-autoprefix": "postcss --use autoprefixer --output ./css/bulma.css ./css/bulma.css",
+    "build-clean": "rm -rf css; mkdir css",
+    "build-stylus": "stylus bulma.styl --out css",
+    "start": "stylus -w bulma.styl --out css"
   },
   "files": [
     "css",
