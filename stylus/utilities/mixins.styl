@@ -51,7 +51,7 @@ delete()
   width dimension-normal
   &:before,
   &:after
-    background-color white
+    background-color $white
     content ""
     display block
     left 50%
@@ -66,9 +66,9 @@ delete()
     width 2px
   &:hover,
   &:focus
-    background-color rgba(black, 0.3)
+    background-color rgba($black, 0.3)
   &:active
-    background-color rgba(black, 0.4)
+    background-color rgba($black, 0.4)
   // Sizes
   &.is-small
     height dimension-small
@@ -113,11 +113,11 @@ hamburger(dimensions)
     &:nth-child(3)
       margin-top 4px
   &:hover
-    background-color background
+    background-color $background
   // Modifers
   &.is-active
     span
-      background-color link
+      background-color $link
       &:nth-child(1)
         margin-left -5px
         transform rotate(45deg)
