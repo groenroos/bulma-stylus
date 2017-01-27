@@ -139,8 +139,8 @@ a {
   color: #00d1b2;
   cursor: pointer;
   text-decoration: none;
-  -webkit-transition: none speed easing;
-  transition: none speed easing;
+  -webkit-transition: none 86ms ease-out;
+  transition: none 86ms ease-out;
 }
 a:hover {
   color: #363636;
@@ -3309,8 +3309,8 @@ a.box:active {
   margin-left: -7px;
   position: absolute;
   top: 50%;
-  -webkit-transition: none speed easing;
-  transition: none speed easing;
+  -webkit-transition: none 86ms ease-out;
+  transition: none 86ms ease-out;
   -webkit-transition-property: background, left, opacity, -webkit-transform;
   transition-property: background, left, opacity, -webkit-transform;
   transition-property: background, left, opacity, transform;

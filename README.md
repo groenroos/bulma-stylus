@@ -2,7 +2,7 @@
 
 This is a Stylus translation of the [Bulma](http://bulma.io) CSS framework.
 
-Bulma Stylus aims at a 1:1 functional parity with the latest version of the original Sass-based Bulma.
+Bulma Stylus aims at a 1:1 functional parity with the latest version of [the original Sass-based Bulma](https://github.com/jgthms/bulma).
 
 
 ## Installation
