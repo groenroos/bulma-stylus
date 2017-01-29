@@ -99,7 +99,7 @@ th {
 }
 html {
   background-color: #fff;
-  font-size: size-6;
+  font-size: 14px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
