@@ -1,5 +1,5 @@
-arrow(color)
-  border 1px solid color
+arrow($color)
+  border 1px solid $color
   border-right 0
   border-top 0
   content " "
@@ -20,19 +20,14 @@ clearfix()
     content " "
     display table
 
-center(size)
+center($size)
   left 50%
-  margin-left (size / 2 * -1)
-  margin-top (size / 2 * -1)
+  margin-left ($size / 2 * -1)
+  margin-top ($size / 2 * -1)
   position absolute
   top 50%
 
 delete()
-  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
-  dimension-small = roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
-  dimension-normal = roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
-  dimension-medium = roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
-  dimension-large = roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   unselectable()
   -moz-appearance none
   -webkit-appearance none
@@ -42,13 +37,11 @@ delete()
   cursor pointer
   display inline-block
   font-size $size-normal
-  height dimension-normal
+  height 20px
   outline none
   position relative
-  transform rotate(45deg)
-  transform-origin center center
   vertical-align top
-  width dimension-normal
+  width 20px
   &:before,
   &:after
     background-color $white
@@ -57,7 +50,8 @@ delete()
     left 50%
     position absolute
     top 50%
-    transform translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%) rotate(45deg)
+    transform-origin: center center
   &:before
     height 2px
     width 50%
@@ -71,30 +65,30 @@ delete()
     background-color rgba($black, 0.4)
   // Sizes
   &.is-small
-    height dimension-small
-    width dimension-small
+    height 16px
+    width 16px
   &.is-medium
-    height dimension-medium
-    width dimension-medium
+    height 24px
+    width 24px
   &.is-large
-    height dimension-large
-    width dimension-large
+    height 32px
+    width 32px
 
-fa(size, dimensions)
+fa($size, dimensions)
   display inline-block
-  font-size size
-  height dimensions
-  line-height dimensions
+  font-size $size
+  height $dimensions
+  line-height $dimensions
   text-align center
   vertical-align top
-  width dimensions
+  width $dimensions
 
-hamburger(dimensions)
+hamburger($dimensions)
   cursor pointer
   display block
-  height dimensions
+  height $dimensions
   position relative
-  width dimensions
+  width $dimensions
   span
     background-color $text
     display block
@@ -143,24 +137,24 @@ loader()
   border-top-color transparent
   content ""
   display block
-  height 1rem
+  height 1em
   position relative
-  width 1rem
+  width 1em
 
 overflow-touch()
   -webkit-overflow-scrolling touch
 
-overlay(offset = 0)
-  bottom offset
-  left offset
+overlay($offset = 0)
+  bottom $offset
+  left $offset
   position absolute
-  right offset
-  top offset
+  right $offset
+  top $offset
 
 placeholder()
-  placeholders = ':-moz' ':-webkit-input' '-moz' '-ms-input'
-  for placeholder in placeholders
-    &:{placeholder}-placeholder
+  $placeholders = ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  for $placeholder in $placeholders
+    &:{$placeholder}-placeholder
       {block}
 
 unselectable()
@@ -172,18 +166,12 @@ unselectable()
 
 // Responsiveness
 
-$tablet = 769px 
-$desktop = 1000px  // 960px container + 40px
-$widescreen = 1192px  // 1152px container + 40
-// 960 and 1152 have been chosen because
-// they are divisible by both 12 and 16
-
-from(device)
-  @media screen and (min-width device)
+from($device)
+  @media screen and (min-width $device)
     {block}
 
-until(device)
-  @media screen and (max-width device - 1px)
+until($device)
+  @media screen and (max-width $device - 1px)
     {block}
 
 mobile()
@@ -212,4 +200,12 @@ desktop-only()
 
 widescreen()
   @media screen and (min-width $widescreen)
+    {block}
+
+widescreen-only()
+  @media screen and (min-width $widescreen) and (max-width $fullhd - 1px)
+    {block}
+
+fullhd()
+  @media screen and (min-width $fullhd)
     {block}

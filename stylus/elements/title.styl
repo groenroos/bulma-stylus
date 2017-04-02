@@ -29,12 +29,13 @@ $subtitle-weight ?=   $weight-light
     color inherit
   & + .highlight
     margin-top -0.75rem
-  & + .subtitle
-    margin-top -1.25rem
+  &:not(.is-spaced) + .subtitle
+    margin-top -1.5rem
   // Colors
-  for size, i in $sizes
-    &.is-{i}
-      font-size size
+  for $size, $i in $sizes
+    // 
+    &.is-{$i}
+      font-size $size
 
 .subtitle
   color $subtitle
@@ -43,9 +44,10 @@ $subtitle-weight ?=   $weight-light
   line-height 1.25
   strong
     color $subtitle-strong
-  & + .title
+  &:not(.is-spaced) + .title
     margin-top -1.5rem
   // Colors
-  for size, i in $sizes
-    &.is-{i}
-      font-size size
+  for $size, $i in $sizes
+    //
+    &.is-{$i}
+      font-size $size
