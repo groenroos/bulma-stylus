@@ -1,15 +1,19 @@
-$button ?= $grey-darker 
-$button-background ?= $white 
-$button-border ?= $grey-lighter 
+$button ?= $grey-darker
+$button-background ?= $white
+$button-border ?= $grey-lighter
 
-$button-hover ?= $link-hover 
-$button-hover-border ?= $link-hover-border 
+$button-hover ?= $link-hover
+$button-hover-border ?= $link-hover-border
 
-$button-focus ?= $link-focus 
-$button-focus-border ?= $link-focus-border 
+$button-focus ?= $link-focus
+$button-focus-border ?= $link-focus-border
 
-$button-active ?= $link-active 
-$button-active-border ?= $link-active-border 
+$button-active ?= $link-active
+$button-active-border ?= $link-active-border
+
+$button-static ?= $grey
+$button-static-background ?= $white-ter
+$button-static-border ?= $grey-lighter
 
 $button-shadow-inset ?= inset 0 1px 2px rgba($black, 0.2)
 
@@ -26,7 +30,7 @@ button-large()
   control()
   unselectable()
   background-color $button-background
-  border 1px solid $button-border
+  border-color $button-border
   color $button
   cursor pointer
   justify-content center
@@ -81,6 +85,10 @@ button-large()
     &.is-active
       background-color $background
       color $text-strong
+    &[disabled]
+      background-color transparent
+      border-color transparent
+      box-shadow none
   for name, pair in $colors
     color = pair['1']
     color-invert = pair['2']
@@ -104,6 +112,10 @@ button-large()
         border-color transparent
         box-shadow $button-shadow-inset
         color color-invert
+      &[disabled]
+        background-color $color
+        border-color transparent
+        box-shadow none
       &.is-inverted
         background-color color-invert
         color color
@@ -124,6 +136,11 @@ button-large()
         &.is-loading
           &:after
             border-color transparent transparent color color !important
+          &[disabled]
+            background-color transparent
+            border-color $color
+            box-shadow none
+            color $color
       &.is-inverted.is-outlined
         background-color transparent
         border-color color-invert
@@ -132,6 +149,11 @@ button-large()
         &:focus
           background-color color-invert
           color color
+        &[disabled]
+          background-color transparent
+          border-color $color-invert
+          box-shadow none
+          color $color-invert
   // Sizes
   &.is-small
     button-small()
@@ -140,8 +162,10 @@ button-large()
   &.is-large
     button-large()
   // Modifiers
-  &[disabled],
-  &.is-disabled
+  &[disabled]
+    background-color $button-background
+    border-color $button-border
+    box-shadow none
     opacity 0.5
   &.is-fullwidth
     display flex
@@ -153,6 +177,12 @@ button-large()
       loader()
       center(1em)
       position absolute !important
+  &.is-static
+    background-color $button-static-background
+    border-color $button-static-border
+    color $button-static
+    box-shadow none
+    pointer-events none
 
 // Adjustment for vertical spacing
 button.button,

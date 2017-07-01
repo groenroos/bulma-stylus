@@ -59,6 +59,15 @@ for $display in $displays
 .has-text-right
   text-align right
 
+for name, pair in $colors
+  color = pair['1']
+  .has-text-{name}
+    color color
+  a.has-text-{name}
+    &:hover,
+    &:focus
+      color darken(color, 10%)
+
 // Visibility
 
 .is-hidden
@@ -93,9 +102,6 @@ for $display in $displays
     display none !important
 
 // Other
-
-.is-disabled
-  pointer-events none
 
 .is-marginless
   margin 0 !important

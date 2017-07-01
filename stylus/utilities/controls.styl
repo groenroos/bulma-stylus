@@ -1,22 +1,25 @@
-$control-radius ?= $radius 
-$control-radius-small ?= $radius-small 
+$control-radius ?= $radius
+$control-radius-small ?= $radius-small
+
+$control-padding-vertical ?= calc(0.375em - 1px)
+$control-padding-horizontal ?= calc(0.625em - 1px)
 
 control()
   -moz-appearance none
   -webkit-appearance none
   align-items center
-  border none
+  border 1px solid transparent
   border-radius $control-radius
   box-shadow none
   display inline-flex
   font-size $size-normal
   height 2.25em
   justify-content flex-start
-  line-height 1.25
-  padding-bottom 0.5em
-  padding-left 0.625em
-  padding-right 0.625em
-  padding-top 0.5em
+  line-height 1.5
+  padding-bottom $control-padding-vertical
+  padding-left $control-padding-horizontal
+  padding-right $control-padding-horizontal
+  padding-top $control-padding-vertical
   position relative
   vertical-align top
   // States
@@ -25,9 +28,8 @@ control()
   &:active,
   &.is-active
     outline none
-  &[disabled],
-  &.is-disabled
-    pointer-events none
+  &[disabled]
+    cursor not-allowed
 
 // The controls sizes use mixins so they can be used at different breakpoints
 control-small()
