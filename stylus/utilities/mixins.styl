@@ -20,12 +20,14 @@ clearfix()
     content " "
     display table
 
-center($size)
-  left 50%
-  margin-left ($size / 2 * -1)
-  margin-top ($size / 2 * -1)
+center($width, $height = 0)
   position absolute
-  top 50%
+  if $height != 0
+    left "calc(50% - (%s / 2))" % $width
+    top "calc(50% - (%s / 2))" % $height
+  else
+    left "calc(50% - (%s / 2))" % $width
+    top "calc(50% - (%s / 2))" % $width
 
 delete()
   unselectable()
@@ -36,8 +38,14 @@ delete()
   border-radius 290486px
   cursor pointer
   display inline-block
+  flex-grow 0
+  flex-shrink 0
   font-size $size-normal
   height 20px
+  max-height 20px
+  max-width 20px
+  min-height 20px
+  min-width 20px
   outline none
   position relative
   vertical-align top
@@ -50,8 +58,8 @@ delete()
     left 50%
     position absolute
     top 50%
-    transform: translateX(-50%) translateY(-50%) rotate(45deg)
-    transform-origin: center center
+    transform translateX(-50%) translateY(-50%) rotate(45deg)
+    transform-origin center center
   &:before
     height 2px
     width 50%
@@ -66,12 +74,24 @@ delete()
   // Sizes
   &.is-small
     height 16px
+    max-height 16px
+    max-width 16px
+    min-height 16px
+    min-width 16px
     width 16px
   &.is-medium
     height 24px
+    max-height 24px
+    max-width 24px
+    min-height 24px
+    min-width 24px
     width 24px
   &.is-large
     height 32px
+    max-height 32px
+    max-width 32px
+    min-height 32px
+    min-width 32px
     width 32px
 
 fa($size, dimensions)
@@ -123,12 +143,6 @@ hamburger($dimensions)
         transform rotate(-45deg)
         transform-origin left bottom
 
-@keyframes spinAround
-  from
-    transform rotate(0deg)
-  to
-    transform rotate(359deg)
-
 loader()
   animation spinAround 500ms infinite linear
   border 2px solid $border
@@ -179,7 +193,7 @@ mobile()
     {block}
 
 tablet()
-  @media screen and (min-width $tablet)
+  @media screen and (min-width $tablet), print
     {block}
 
 tablet-only()

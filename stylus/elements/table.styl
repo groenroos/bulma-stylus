@@ -1,12 +1,16 @@
-$table ?=                           $grey-darker 
-$table-background ?=                $white 
-$table-border ?=                    $grey-lighter 
+$table                           ?= $grey-darker
+$table-background                ?= $white
+$table-border                    ?= $grey-lighter
 
-$table-head ?=                      $grey 
+$table-head                      ?= $grey
 
-$table-row-hover-background ?=      $white-bis 
-$table-row-even-background ?=       $white-bis 
-$table-row-even-hover-background ?= $white-ter 
+$table-row-hover-background      ?= $white-bis
+
+$table-row-active-background     ?= $primary
+$table-row-active                ?= $primary-invert
+
+$table-row-even-background       ?= $white-bis
+$table-row-even-hover-background ?= $white-ter
 
 .table
   background-color $table-background
@@ -29,6 +33,16 @@ $table-row-even-hover-background ?= $white-ter
   tr
     &:hover
       background-color $table-row-hover-background
+    &.is-selected
+      background-color $table-row-active-background
+      color $table-row-active
+      a,
+      strong
+        color currentColor
+      td,
+      th
+        border-color $table-row-active
+        color currentColor
   thead
     td,
     th
@@ -61,7 +75,7 @@ $table-row-even-hover-background ?= $white-ter
       padding 0.25em 0.5em
   &.is-striped
     tbody
-      tr
+      tr:not(.is-selected)
         &:nth-child(even)
           background-color $table-row-even-background
           &:hover

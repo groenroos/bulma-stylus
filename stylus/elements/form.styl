@@ -1,28 +1,28 @@
-$input ?=                     $grey-darker 
-$input-background ?=          $white 
-$input-border ?=              $grey-lighter 
+$input ?=                     $grey-darker
+$input-background ?=          $white
+$input-border ?=              $grey-lighter
 
-$input-hover ?=               $grey-darker 
-$input-hover-border ?=        $grey-light 
+$input-hover ?=               $grey-darker
+$input-hover-border ?=        $grey-light
 
-$input-focus ?=               $grey-darker 
-$input-focus-border ?=        $link 
+$input-focus ?=               $grey-darker
+$input-focus-border ?=        $link
 
-$input-disabled ?=            $text-light 
-$input-disabled-background ?= $background 
-$input-disabled-border ?=     $background 
+$input-disabled ?=            $text-light
+$input-disabled-background ?= $background
+$input-disabled-border ?=     $background
 
-$input-arrow ?=               $link 
+$input-arrow ?=               $link
 
-$input-icon ?=                $grey-lighter 
-$input-icon-active ?=         $grey 
+$input-icon ?=                $grey-lighter
+$input-icon-active ?=         $grey
 
-$input-radius ?=              $radius 
+$input-radius ?=              $radius
 
 input()
   control()
   background-color $input-background
-  border 1px solid $input-border
+  border-color $input-border
   color $input
   &:hover,
   &.is-hovered
@@ -32,8 +32,7 @@ input()
   &:active,
   &.is-active
     border-color $input-focus-border
-  &[disabled],
-  &.is-disabled
+  &[disabled]
     background-color $input-disabled-background
     border-color $input-disabled-border
     box-shadow none
@@ -71,7 +70,6 @@ input()
 
 .textarea
   display block
-  line-height 1.25
   max-height 600px
   max-width 100%
   min-height 120px
@@ -81,23 +79,17 @@ input()
 
 .checkbox,
 .radio
-  align-items center
   cursor pointer
-  display inline-flex
-  flex-wrap wrap
-  justify-content flex-start
+  display inline-block
+  line-height 1.25
   position relative
-  vertical-align top
   input
     cursor pointer
-    margin-right 0.5em
   &:hover
     color $input-hover
-  &.is-disabled
+  &[disabled]
     color $input-disabled
-    pointer-events none
-    input
-      pointer-events none
+    cursor not-allowed
 
 .radio
   & + .radio
@@ -106,6 +98,7 @@ input()
 .select
   display inline-block
   height 2.25em
+  max-width: 100%
   position relative
   vertical-align top
   &:after
@@ -119,16 +112,24 @@ input()
     cursor pointer
     display block
     font-size 1em
+    max-width: 100%
     outline none
     padding-right 2.5em
     &:hover
       border-color $input-hover-border
-    &::ms-expand
+    &::-ms-expand
       display none
+    &[disabled]:hover
+      border-color $input-disabled-border
   // States
   &:hover
     &:after
       border-color $input-hover
+  // Colors
+  for name, pair in $colors
+    color = pair['1']
+    &.is-{name} select
+      border-color color
   // Sizes
   &.is-small
     control-small()
@@ -137,10 +138,27 @@ input()
   &.is-large
     control-large()
   // Modifiers
+  &.is-disabled
+    &:after
+      border-color $input-disabled
   &.is-fullwidth
     width 100%
     select
       width 100%
+  &.is-loading
+    &:after
+      loader()
+      margin-top 0
+      position absolute
+      right 0.625em
+      top 0.625em
+      transform none
+    &.is-small:after
+      font-size $size-small
+    &.is-medium:after
+      font-size $size-medium
+    &.is-large:after
+      font-size $size-large
 
 .label
   color $input
@@ -149,6 +167,13 @@ input()
   font-weight $weight-bold
   &:not(:last-child)
     margin-bottom 0.5em
+  // Sizes
+  &.is-small
+    font-size $size-small
+  &.is-medium
+    font-size $size-medium
+  &.is-large
+    font-size $size-large
 
 .help
   display block
@@ -158,9 +183,6 @@ input()
     color = pair['1']
     &.is-{name}
       color color
-      
-.select select
-  line-height 1
 
 // Containers
 
@@ -189,14 +211,18 @@ input()
       .input,
       .select select
         border-radius 0
-        &:hover
+        &:hover,
+        &.is-hovered
           z-index 2
         &:focus,
-        &:active
+        &.is-focused,
+        &:active,
+        &.is-active
           z-index 3
+          &:hover
+            z-index 4
       &.is-expanded
         flex-grow 1
-        flex-shrink 0
     &.has-addons-centered
       justify-content center
     &.has-addons-right
@@ -209,7 +235,6 @@ input()
     display flex
     justify-content flex-start
     & > .control
-      flex-basis 0
       flex-shrink 0
       &:not(:last-child)
         margin-bottom 0
@@ -226,6 +251,8 @@ input()
       display flex
 
 .field-label
+  .label
+    font-size inherit
   +mobile()
     margin-bottom 0.5rem
   +tablet()
@@ -235,6 +262,17 @@ input()
     margin-right 1.5rem
     padding-top 0.375em
     text-align right
+    &.is-small
+      font-size $size-small
+      padding-top 0.375em
+    &.is-normal
+      padding-top: 0.375em
+    &.is-medium
+      font-size $size-medium
+      padding-top: 0.375em
+    &.is-large
+      font-size $size-large
+      padding-top: 0.375em
 
 .field-body
   +tablet()
@@ -255,6 +293,7 @@ input()
   position relative
   text-align left
   // Modifiers
+  // DEPRECATED
   &.has-icon
     .icon
       color $input-icon
@@ -280,36 +319,56 @@ input()
     &:not(.has-icon-right)
       .icon
         left 0
-        // transform translateX(-50%) translateY(-50%)
       .input
         padding-left 2.25em
-        // &.is-small
-        //   & + .icon
-        //     left (($size-small * 2.5) / 2)
-        // &.is-medium
-        //   & + .icon
-        //     left (($size-medium * 2.5) / 2)
-        // &.is-large
-        //   & + .icon
-        //     left (($size-large * 2.5) / 2)
     &.has-icon-right
       .icon
         right 0
-        // transform translateX(50%) translateY(-50%)
       .input
         padding-right 2.25em
-        // &.is-small
-        //   & + .icon
-        //     right (($size-small * 2.5) / 2)
-        // &.is-medium
-        //   & + .icon
-        //     right (($size-medium * 2.5) / 2)
-        // &.is-large
-        //   & + .icon
-        //     right (($size-large * 2.5) / 2)
+  &.has-icons-left,
+  &.has-icons-right
+    .input,
+    .select select
+      &:focus
+        & ~ .icon
+          color $input-icon-active
+      &.is-small ~ .icon
+        font-size $size-small
+      &.is-medium ~ .icon
+        font-size $size-medium
+      &.is-large ~ .icon
+        font-size $size-large
+    .icon
+      color $input-icon
+      height 2.25em
+      pointer-events none
+      position absolute
+      top 0
+      width 2.25em
+      z-index 4
+  &.has-icon-left
+    .input,
+    .select select
+      padding-left 2.25em
+    .icon.is-left
+      left 0
+  &.has-icon-right
+    .input,
+    .select select
+      padding-right 2.25em
+    .icon.is-right
+      right 0
+
   &.is-loading
     &:after
       loader()
       position absolute !important
       right 0.625em
       top 0.625em
+    &.is-small:after
+      font-size $size-small
+    &.is-medium:after
+      font-size $size-medium
+    &.is-large:after
+      font-size $size-large

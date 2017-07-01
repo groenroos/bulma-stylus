@@ -1,12 +1,12 @@
-$title ?=             $grey-darker 
-$title-size ?=        $size-3 
-$title-weight ?=      $weight-light 
-$title-weight-bold ?= $weight-semibold 
+$title ?=             $grey-darker
+$title-size ?=        $size-3
+$title-weight ?=      $weight-light
+$title-weight-bold ?= $weight-semibold
 
-$subtitle ?=          $grey-dark 
-$subtitle-size ?=     $size-5 
-$subtitle-strong ?=   $grey-darker 
-$subtitle-weight ?=   $weight-light 
+$subtitle ?=          $grey-dark
+$subtitle-size ?=     $size-5
+$subtitle-strong ?=   $grey-darker
+$subtitle-weight ?=   $weight-light
 
 .title,
 .subtitle
@@ -31,9 +31,8 @@ $subtitle-weight ?=   $weight-light
     margin-top -0.75rem
   &:not(.is-spaced) + .subtitle
     margin-top -1.5rem
-  // Colors
+  // Sizes
   for $size, $i in $sizes
-    // 
     &.is-{$i}
       font-size $size
 
@@ -46,8 +45,7 @@ $subtitle-weight ?=   $weight-light
     color $subtitle-strong
   &:not(.is-spaced) + .title
     margin-top -1.5rem
-  // Colors
+  // Sizes
   for $size, $i in $sizes
-    //
     &.is-{$i}
       font-size $size
