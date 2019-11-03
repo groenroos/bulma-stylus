@@ -1,6 +1,6 @@
 {
   "name": "bulma-stylus",
-  "version": "0.4.0",
+  "version": "0.8.0",
   "homepage": "http://github.com/groenroos/bulma-stylus",
   "author": "Oskari Groenroos <oskari@groenroos.fi> (http://groenroos.fi)",
   "contributors": [
@@ -24,16 +24,19 @@
     "url": "https://github.com/groenroos/bulma-stylus/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.3",
+    "autoprefixer": "^9.7.1",
     "captain-git-hook": "~1.0.5",
-    "stylus": "^0.54.5",
-    "postcss-cli": "^2.5.1"
+    "clean-css-cli": "^4.3.0",
+    "stylus": "^0.54.7",
+    "postcss-cli": "^6.1.3",
+    "rimraf": "^2.7.1"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-stylus && npm run build-autoprefix",
-    "build-autoprefix": "postcss --use autoprefixer --output ./css/bulma.css ./css/bulma.css",
-    "build-clean": "rm -rf css; mkdir css",
-    "build-stylus": "stylus bulma.styl --out css",
+    "build": "npm run build-clean && npm run build-stylus && npm run build-autoprefix && npm run build-cleancss",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
+    "build-clean": "rimraf css",
+    "build-stylus": "stylus bulma.styl --out css --sourcemap",
     "start": "stylus -w bulma.styl --out css"
   },
   "files": [

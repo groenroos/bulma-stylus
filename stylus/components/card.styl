@@ -1,32 +1,63 @@
+$card-color ?= $text
+$card-background-color ?= $scheme-main
+$card-shadow ?= 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+
+$card-header-background-color ?= transparent
+$card-header-color ?= $text-strong
+$card-header-padding ?= 0.75rem 1rem
+$card-header-shadow ?= 0 0.125em 0.25em rgba($scheme-invert, 0.1)
+$card-header-weight ?= $weight-bold
+
+$card-content-background-color ?= transparent
+$card-content-padding ?= 1.5rem
+
+$card-footer-background-color ?= transparent
+$card-footer-border-top ?= 1px solid $border-light
+$card-footer-padding ?= 0.75rem
+
+$card-media-margin ?= $block-spacing
+
+.card
+  background-color $card-background-color
+  box-shadow $card-shadow
+  color $card-color
+  max-width 100%
+  position relative
+
 .card-header
+  background-color $card-header-background-color
   align-items stretch
-  box-shadow 0 1px 2px rgba($black, 0.1)
+  box-shadow $card-header-shadow
   display flex
 
 .card-header-title
   align-items center
-  color $text-strong
+  color $card-header-color
   display flex
   flex-grow 1
-  font-weight $weight-bold
-  padding 0.75rem
+  font-weight $card-header-weight
+  padding $card-header-padding
+  &.is-centered
+    justify-content center
 
 .card-header-icon
   align-items center
   cursor pointer
   display flex
   justify-content center
-  padding 0.75rem
+  padding $card-header-padding
 
 .card-image
   display block
   position relative
 
 .card-content
-  padding 1.5rem
+  background-color $card-content-background-color
+  padding $card-content-padding
 
 .card-footer
-  border-top 1px solid $border
+  background-color $card-footer-background-color
+  border-top $card-footer-border-top
   align-items stretch
   display flex
 
@@ -37,15 +68,12 @@
   flex-grow 1
   flex-shrink 0
   justify-content center
-  padding 0.75rem
+  padding $card-footer-padding
   &:not(:last-child)
-    border-right 1px solid $border
+    border-right $card-footer-border-top
+
+// Combinations
 
 .card
-  background-color $white
-  box-shadow 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-  color $text
-  max-width 100%
-  position relative
   .media:not(:last-child)
-    margin-bottom 0.75rem
+    margin-bottom $card-media-margin

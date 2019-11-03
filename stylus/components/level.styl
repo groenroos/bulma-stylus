@@ -1,3 +1,35 @@
+$level-item-spacing ?= ($block-spacing / 2)
+
+.level
+  @extend $block
+  align-items center
+  justify-content space-between
+  code
+    border-radius $radius
+  img
+    display inline-block
+    vertical-align top
+  // Modifiers
+  &.is-mobile
+    display flex
+    .level-left,
+    .level-right
+      display flex
+    .level-left + .level-right
+      margin-top 0
+    .level-item
+      &:not(:last-child)
+        margin-bottom 0
+        margin-right $level-item-spacing
+      &:not(.is-narrow)
+        flex-grow 1
+  // Responsiveness
+  +tablet()
+    display flex
+    & > .level-item
+      &:not(.is-narrow)
+        flex-grow 1
+
 .level-item
   align-items center
   display flex
@@ -11,7 +43,7 @@
   // Responsiveness
   +mobile()
     &:not(:last-child)
-      margin-bottom 0.75rem
+      margin-bottom $level-item-spacing
 
 .level-left,
 .level-right
@@ -19,11 +51,13 @@
   flex-grow 0
   flex-shrink 0
   .level-item
-    &:not(:last-child)
-      margin-right 0.75rem
     // Modifiers
     &.is-flexible
       flex-grow 1
+    // Responsiveness
+    +tablet()
+      &:not(:last-child)
+        margin-right $level-item-spacing
 
 .level-left
   align-items center
@@ -41,32 +75,3 @@
   // Responsiveness
   +tablet()
     display flex
-
-.level
-  block()
-  align-items center
-  justify-content space-between
-  code
-    border-radius $radius
-  img
-    display inline-block
-    vertical-align top
-  // Modifiers
-  &.is-mobile
-    display flex
-    .level-left,
-    .level-right
-      display: flex
-    .level-left + .level-right
-      margin-top: 0
-    .level-item
-      &:not(:last-child)
-        margin-bottom 0
-      &:not(.is-narrow)
-        flex-grow 1
-  // Responsiveness
-  +tablet()
-    display flex
-    & > .level-item
-      &:not(.is-narrow)
-        flex-grow 1

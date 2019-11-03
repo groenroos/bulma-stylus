@@ -1,53 +1,70 @@
-$title ?=             $grey-darker 
-$title-size ?=        $size-3 
-$title-weight ?=      $weight-light 
-$title-weight-bold ?= $weight-semibold 
+$title-color ?= $text-strong
+$title-family ?= false
+$title-size ?= $size-3
+$title-weight ?= $weight-semibold
+$title-line-height ?= 1.125
+$title-strong-color ?= inherit
+$title-strong-weight ?= inherit
+$title-sub-size ?= 0.75em
+$title-sup-size ?= 0.75em
 
-$subtitle ?=          $grey-dark 
-$subtitle-size ?=     $size-5 
-$subtitle-strong ?=   $grey-darker 
-$subtitle-weight ?=   $weight-light 
+$subtitle-color ?= $text
+$subtitle-family ?= false
+$subtitle-size ?= $size-5
+$subtitle-weight ?= $weight-normal
+$subtitle-line-height ?= 1.25
+$subtitle-strong-color ?= $text-strong
+$subtitle-strong-weight ?= $weight-semibold
+$subtitle-negative-margin ?= -1.25rem
 
 .title,
 .subtitle
-  block()
+  @extend $block
   word-break break-word
   em,
   span
-    font-weight $title-weight
-  strong
-    font-weight $title-weight-bold
+    font-weight inherit
+  sub
+    font-size $title-sub-size
+  sup
+    font-size $title-sup-size
   .tag
     vertical-align middle
 
 .title
-  color $title
+  color $title-color
+  if $title-family
+    font-family $title-family
   font-size $title-size
   font-weight $title-weight
-  line-height 1.125
+  line-height $title-line-height
   strong
-    color inherit
+    color $title-strong-color
+    font-weight $title-strong-weight
   & + .highlight
     margin-top -0.75rem
   &:not(.is-spaced) + .subtitle
-    margin-top -1.5rem
-  // Colors
-  for $size, $i in $sizes
-    // 
+    margin-top $subtitle-negative-margin
+  // Sizes
+  for $size in $sizes
+    $i = index($sizes, $size)
     &.is-{$i}
       font-size $size
 
 .subtitle
-  color $subtitle
+  color $subtitle-color
+  if $subtitle-family
+    font-family $subtitle-family
   font-size $subtitle-size
   font-weight $subtitle-weight
-  line-height 1.25
+  line-height $subtitle-line-height
   strong
-    color $subtitle-strong
+    color $subtitle-strong-color
+    font-weight $subtitle-strong-weight
   &:not(.is-spaced) + .title
-    margin-top -1.5rem
-  // Colors
-  for $size, $i in $sizes
-    //
+    margin-top $subtitle-negative-margin
+  // Sizes
+  for $size in $sizes
+    $i = index($sizes, $size)
     &.is-{$i}
       font-size $size

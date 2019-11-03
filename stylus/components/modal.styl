@@ -1,81 +1,113 @@
+$modal-z ?= 40
+
+$modal-background-background-color ?= rgba($scheme-invert, 0.86)
+
+$modal-content-width ?= 640px
+$modal-content-margin-mobile ?= 20px
+$modal-content-spacing-mobile ?= 160px
+$modal-content-spacing-tablet ?= 40px
+
+$modal-close-dimensions ?= 40px
+$modal-close-right ?= 20px
+$modal-close-top ?= 20px
+
+$modal-card-spacing ?= 40px
+
+$modal-card-head-background-color ?= $background
+$modal-card-head-border-bottom ?= 1px solid $border
+$modal-card-head-padding ?= 20px
+$modal-card-head-radius ?= $radius-large
+
+$modal-card-title-color ?= $text-strong
+$modal-card-title-line-height ?= 1
+$modal-card-title-size ?= $size-4
+
+$modal-card-foot-radius ?= $radius-large
+$modal-card-foot-border-top ?= 1px solid $border
+
+$modal-card-body-background-color ?= $scheme-main
+$modal-card-body-padding ?= 20px
+
+.modal
+  @extend $overlay
+  align-items center
+  display none
+  flex-direction column
+  justify-content center
+  overflow hidden
+  position fixed
+  z-index $modal-z
+  // Modifiers
+  &.is-active
+    display flex
+
 .modal-background
-  overlay()
-  background-color rgba($black, 0.86)
+  @extend $overlay
+  background-color $modal-background-background-color
 
 .modal-content,
 .modal-card
-  margin 0 20px
-  max-height calc(100vh - 160px)
+  margin 0 $modal-content-margin-mobile
+  max-height "calc(100vh - %s)" % $modal-content-spacing-mobile
   overflow auto
   position relative
   width 100%
   // Responsiveness
   +tablet()
     margin 0 auto
-    max-height calc(100vh - 40px)
-    width 640px
+    max-height "calc(100vh - %s)" % $modal-content-spacing-tablet
+    width $modal-content-width
 
 .modal-close
-  delete()
+  @extend $delete
   background none
-  height 40px
+  height $modal-close-dimensions
   position fixed
-  right 20px
-  top 20px
-  width 40px
+  right $modal-close-right
+  top $modal-close-top
+  width $modal-close-dimensions
 
 .modal-card
   display flex
   flex-direction column
-  max-height calc(100vh - 40px)
+  max-height "calc(100vh - %s)" % $modal-card-spacing
   overflow hidden
+  -ms-overflow-y visible
 
 .modal-card-head,
 .modal-card-foot
   align-items center
-  background-color $background
+  background-color $modal-card-head-background-color
   display flex
   flex-shrink 0
   justify-content flex-start
-  padding 20px
+  padding $modal-card-head-padding
   position relative
 
 .modal-card-head
-  border-bottom 1px solid $border
-  border-top-left-radius $radius-large
-  border-top-right-radius $radius-large
+  border-bottom $modal-card-head-border-bottom
+  border-top-left-radius $modal-card-head-radius
+  border-top-right-radius $modal-card-head-radius
 
 .modal-card-title
-  color $text-strong
+  color $modal-card-title-color
   flex-grow 1
   flex-shrink 0
-  font-size $size-4
-  line-height 1
+  font-size $modal-card-title-size
+  line-height $modal-card-title-line-height
 
 .modal-card-foot
-  border-bottom-left-radius $radius-large
-  border-bottom-right-radius $radius-large
-  border-top 1px solid $border
+  border-bottom-left-radius $modal-card-foot-radius
+  border-bottom-right-radius $modal-card-foot-radius
+  border-top $modal-card-foot-border-top
   .button
     &:not(:last-child)
-      margin-right 10px
+      margin-right 0.5em
 
 .modal-card-body
   overflow-touch()
-  background-color $white
+  background-color $modal-card-body-background-color
   flex-grow 1
   flex-shrink 1
   overflow auto
-  padding 20px
-
-.modal
-  overlay()
-  align-items center
-  display none
-  justify-content center
-  overflow hidden
-  position fixed
-  z-index 1986
-  // Modifiers
-  &.is-active
-    display flex
+  padding $modal-card-body-padding
