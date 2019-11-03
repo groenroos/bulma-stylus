@@ -428,11 +428,11 @@ $column-gap ?= 0.75rem
         margin-left percentage($i / 12)
 
 .columns
-  margin-left (-$column-gap)
-  margin-right (-$column-gap)
-  margin-top (-$column-gap)
+  margin-left ($column-gap * -1)
+  margin-right ($column-gap * -1)
+  margin-top ($column-gap * -1)
   &:last-child
-    margin-bottom (-$column-gap)
+    margin-bottom ($column-gap * -1)
   &:not(:last-child)
     margin-bottom "calc(1.5rem - %s)" % $column-gap
   // Modifiers
