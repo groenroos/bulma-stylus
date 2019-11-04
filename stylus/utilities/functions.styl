@@ -80,7 +80,7 @@ colorLuminance($color)
   return ($color-rgb['red'] * .2126) + ($color-rgb['green'] * .7152) + ($color-rgb['blue'] * .0722)
 
 findColorInvert($color)
-  if (colorLuminance($color) > 0.55)
+  if colorLuminance($color) > 55
     return rgba(#000, 0.7)
   else
     return #fff
@@ -101,3 +101,9 @@ findDarkColor($color)
     $target-l = round($base-l + ($luminance-delta * 53))
     return lightness($color, max($base-l, $target-l))
   return $text-strong
+
+darken($color, $amount)
+  return lightness($color, lightness($color) - $amount)
+
+lighten($color, $amount)
+  return lightness($color, lightness($color) + $amount)
