@@ -8,6 +8,8 @@
   ],
   "description": "Modern CSS framework based on Flexbox",
   "main": "bulma.styl",
+  "unpkg": "css/bulma.css",
+  "style": "bulma/css/bulma.min.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/groenroos/bulma-stylus.git"
@@ -27,16 +29,18 @@
     "autoprefixer": "^9.7.1",
     "captain-git-hook": "~1.0.5",
     "clean-css-cli": "^4.3.0",
-    "stylus": "^0.54.7",
     "postcss-cli": "^6.1.3",
-    "rimraf": "^2.7.1"
+    "rimraf": "^2.7.1",
+    "stylelint": "^11.1.1",
+    "stylus": "^0.54.7"
   },
   "scripts": {
     "build": "npm run build-clean && npm run build-stylus && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css && stylelint css/bulma.css --fix -q",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
     "build-clean": "rimraf css",
     "build-stylus": "stylus bulma.styl --out css --sourcemap",
+    "deploy": "npm run build",
     "start": "stylus -w bulma.styl --out css"
   },
   "files": [
