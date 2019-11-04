@@ -31,7 +31,7 @@ bower install bulma-stylus
 
 Since Bulma Stylus is functionally identical to the original Bulma, you can refer to the original [Bulma documentation](http://bulma.io/documentation/overview/start/) for instructions, examples, syntax and browser support.
 
-All variable and mixin names are the same. The only caveat is that if you wish to customize the `$colors` variable, you must adhere to the Stylus hash format. Refer to the default value in [`/stylus/utilities/variables.styl:148`](https://github.com/groenroos/bulma-stylus/blob/master/stylus/utilities/variables.styl#L148) for an example.
+All variable and mixin names are the same. The only caveat is that if you wish to customize the `$colors` variable, you must adhere to the Stylus hash format.
 
 ## Bugs & support
 
@@ -39,7 +39,7 @@ Any bugs or support requests can be posted into [the GitHub issue tracker](https
 
 **Please note:** Bulma Stylus is simply a translation of Bulma from Sass to Stylus, with no corrections or deviations made. Therefore, before submitting a bug, please make sure the issue is actually related specifically to the translation, and the Sass edition of Bulma does not exhibit the same bug. If it does, please submit your issue to [Bulma's issue tracker](https://github.com/jgthms/bulma/issues) instead.
 
-Similarly, any pull requests should only relate directly to the translation (translate a newer version into Stylus, fix syntax errors). Any pull requests for new features or behavior fixes should go [directly to Bulma](https://github.com/jgthms/bulma/pulls).
+Similarly, any pull requests should only relate directly to the translation (translate a newer version of Bulma into Stylus, fix syntax errors). Any pull requests for new features or behavior fixes should go [directly to Bulma](https://github.com/jgthms/bulma/pulls).
 
 ## License
 
