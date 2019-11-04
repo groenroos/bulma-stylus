@@ -57,14 +57,7 @@ mergeColorMaps($bulma-colors, $custom-colors)
   return $merged-colors
 
 powerNumber($number, $exp)
-  $value = 1
-  if $exp > 0
-    for $i in 1..$exp
-      $value = $value * $number
-  else if $exp < 0
-    for $i in 1..-$exp
-      $value = $value / $number
-  return $value
+  return $number ** $exp
 
 colorLuminance($color)
   $color-rgb = {'red': red($color),'green': green($color),'blue': blue($color)}
@@ -76,17 +69,17 @@ colorLuminance($color)
     else
       $value = ($value + .055) / 1.055
       $value = powerNumber($value, 2)
-    $color-rgb = merge($color-rgb, {$name: $value})
-  return ($color-rgb['red'] * .2126) + ($color-rgb['green'] * .7152) + ($color-rgb['blue'] * .0722)
+    $color-rgb[$name] = $value
+  return (($color-rgb['red'] * .2126) + ($color-rgb['green'] * .7152) + ($color-rgb['blue'] * .0722))
 
 findColorInvert($color)
-  if colorLuminance($color) > 55
+  if colorLuminance($color) > 0.55
     return rgba(#000, 0.7)
   else
     return #fff
 
 findLightColor($color)
-  if typeof($color) == 'color'
+  if typeof($color) == 'rgba' or typeof($color) == 'hsla'
     $l = 96%
     if lightness($color) > 96%
       $l = lightness($color)
@@ -94,7 +87,7 @@ findLightColor($color)
   return $background
 
 findDarkColor($color)
-  if typeof($color) == 'color'
+  if typeof($color) == 'rgba' or typeof($color) == 'hsla'
     $base-l = 29%
     $luminance = colorLuminance($color)
     $luminance-delta = (0.53 - $luminance)
