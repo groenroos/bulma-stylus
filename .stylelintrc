@@ -3,7 +3,6 @@
     "at-rule-empty-line-before": "always",
     "block-no-empty": null,
     "color-no-invalid-hex": true,
-    //"color-named": "always-where-possible",
     "comment-empty-line-before": [ "always", {
       "ignore": ["stylelint-commands", "after-comment"]
     } ],
