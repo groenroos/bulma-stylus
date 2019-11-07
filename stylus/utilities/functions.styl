@@ -95,8 +95,13 @@ findDarkColor($color)
     return lightness($color, max($base-l, $target-l))
   return $text-strong
 
+/* Invisible bif replacements to match the behaviour of Sass */
+
 darken($color, $amount)
   return lightness($color, lightness($color) - $amount)
 
 lighten($color, $amount)
   return lightness($color, lightness($color) + $amount)
+
+saturate($color, $amount)
+  return saturation($color, saturation($color) + $amount)

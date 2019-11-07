@@ -63,7 +63,8 @@ $message-colors ?= $colors
         color $color-invert
       .message-body
         border-color $color
-        color $color-dark
+        if $color-dark
+          color $color-dark
 
 .message-header
   align-items center
