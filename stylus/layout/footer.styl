@@ -1,3 +1,9 @@
+$footer-background-color ?= $scheme-main-bis
+$footer-color ?= false
+$footer-padding ?= 3rem 1.5rem 6rem
+
 .footer
-  background-color $background
-  padding 3rem 1.5rem 6rem
+  background-color $footer-background-color
+  padding $footer-padding
+  if $footer-color
+    color $footer-color

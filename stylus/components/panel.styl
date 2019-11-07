@@ -1,49 +1,89 @@
+$panel-margin ?= $block-spacing
+$panel-item-border ?= 1px solid $border-light
+$panel-radius ?= $radius-large
+$panel-shadow ?= 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+
+$panel-heading-background-color ?= $border-light
+$panel-heading-color ?= $text-strong
+$panel-heading-line-height ?= 1.25
+$panel-heading-padding ?= 0.75em 1em
+$panel-heading-radius ?= $radius
+$panel-heading-size ?= 1.25em
+$panel-heading-weight ?= $weight-bold
+
+$panel-tabs-font-size ?= 0.875em
+$panel-tab-border-bottom ?= 1px solid $border
+$panel-tab-active-border-bottom-color ?= $link-active-border
+$panel-tab-active-color ?= $link-active
+
+$panel-list-item-color ?= $text
+$panel-list-item-hover-color ?= $link
+
+$panel-block-color ?= $text-strong
+$panel-block-hover-background-color ?= $background
+$panel-block-active-border-left-color ?= $link
+$panel-block-active-color ?= $link-active
+$panel-block-active-icon-color ?= $link
+
+$panel-icon-color ?= $text-light
+$panel-colors ?= $colors
+
 .panel
+  border-radius $panel-radius
+  box-shadow $panel-shadow
   font-size $size-normal
   &:not(:last-child)
-    margin-bottom 1.5rem
+    margin-bottom $panel-margin
+  // Colors
+  for $name, $components in $panel-colors
+    $color = $components['1']
+    $color-invert = $components['2']
+    &.is-{$name}
+      .panel-heading
+        background-color $color
+        color $color-invert
+      .panel-tabs a.is-active
+        border-bottom-color $color
+      .panel-block.is-active .panel-icon
+        color $color
 
-.panel-heading,
 .panel-tabs,
 .panel-block
-  border-bottom 1px solid $border
-  border-left 1px solid $border
-  border-right 1px solid $border
-  &:first-child
-    border-top 1px solid $border
+  &:not(:last-child)
+    border-bottom $panel-item-border
 
 .panel-heading
-  background-color $background
-  border-radius $radius $radius 0 0
-  color $text-strong
-  font-size 1.25em
-  font-weight $weight-light
-  line-height 1.25
-  padding 0.5em 0.75em
+  background-color $panel-heading-background-color
+  border-radius $panel-radius $panel-radius 0 0
+  color $panel-heading-color
+  font-size $panel-heading-size
+  font-weight $panel-heading-weight
+  line-height $panel-heading-line-height
+  padding $panel-heading-padding
 
 .panel-tabs
   align-items flex-end
   display flex
-  font-size 0.875em
+  font-size $panel-tabs-font-size
   justify-content center
   a
-    border-bottom 1px solid $border
+    border-bottom $panel-tab-border-bottom
     margin-bottom -1px
     padding 0.5em
     // Modifiers
     &.is-active
-      border-bottom-color $link-active-border
-      color $link-active
+      border-bottom-color $panel-tab-active-border-bottom-color
+      color $panel-tab-active-color
 
 .panel-list
   a
-    color $text
+    color $panel-list-item-color
     &:hover
-      color $link
+      color $panel-list-item-hover-color
 
 .panel-block
   align-items center
-  color $text-strong
+  color $panel-block-color
   display flex
   justify-content flex-start
   padding 0.5em 0.75em
@@ -53,21 +93,26 @@
     flex-grow 1
     flex-shrink 1
     width 100%
+  &.is-wrapped
+    flex-wrap wrap
   &.is-active
-    border-left-color $link
-    color $link-active
+    border-left-color $panel-block-active-border-left-color
+    color $panel-block-active-color
     .panel-icon
-      color $link
+      color $panel-block-active-icon-color
+  &:last-child
+    border-bottom-left-radius $panel-radius
+    border-bottom-right-radius $panel-radius
 
 a.panel-block,
 label.panel-block
   cursor pointer
   &:hover
-    background-color $background
+    background-color $panel-block-hover-background-color
 
 .panel-icon
   fa(14px, 1em)
-  color $text-light
+  color $panel-icon-color
   margin-right 0.75em
   .fa
     font-size inherit

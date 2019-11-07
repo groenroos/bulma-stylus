@@ -1,32 +1,57 @@
+$menu-item-color ?= $text
+$menu-item-radius ?= $radius-small
+$menu-item-hover-color ?= $text-strong
+$menu-item-hover-background-color ?= $background
+$menu-item-active-color ?= $link-invert
+$menu-item-active-background-color ?= $link
+
+$menu-list-border-left ?= 1px solid $border
+$menu-list-line-height ?= 1.25
+$menu-list-link-padding ?= 0.5em 0.75em
+$menu-nested-list-margin ?= 0.75em
+$menu-nested-list-padding-left ?= 0.75em
+
+$menu-label-color ?= $text-light
+$menu-label-font-size ?= 0.75em
+$menu-label-letter-spacing ?= 0.1em
+$menu-label-spacing ?= 1em
+
 .menu
   font-size $size-normal
+  // Sizes
+  &.is-small
+    font-size $size-small
+  &.is-medium
+    font-size $size-medium
+  &.is-large
+    font-size $size-large
 
 .menu-list
-  line-height 1.25
+  line-height $menu-list-line-height
   a
-    border-radius $radius-small
-    color $text
+    border-radius $menu-item-radius
+    color $menu-item-color
     display block
-    padding 0.5em 0.75em
+    padding $menu-list-link-padding
     &:hover
-      background-color $background
-      color $link
+      background-color $menu-item-hover-background-color
+      color $menu-item-hover-color
     // Modifiers
     &.is-active
-      background-color $link
-      color $link-invert
+      background-color $menu-item-active-background-color
+      color $menu-item-active-color
   li
     ul
-      border-left 1px solid $border
-      margin 0.75em
-      padding-left 0.75em
+      border-left $menu-list-border-left
+      margin $menu-nested-list-margin
+      padding-left $menu-nested-list-padding-left
 
 .menu-label
-  color $text-light
-  font-size 0.8em
-  letter-spacing 0.1em
+  color $menu-label-color
+  font-size $menu-label-font-size
+  letter-spacing $menu-label-letter-spacing
   text-transform uppercase
   &:not(:first-child)
-    margin-top 1em
+    margin-top $menu-label-spacing
   &:not(:last-child)
-    margin-bottom 1em
+    margin-bottom $menu-label-spacing

@@ -1,26 +1,36 @@
+$notification-background-color ?= $background
+$notification-code-background-color ?= $scheme-main
+$notification-radius ?= $radius
+$notification-padding ?= 1.25rem 2.5rem 1.25rem 1.5rem
+
 .notification
-  block()
-  background-color $background
-  border-radius $radius
-  padding 1.25rem 2.5rem 1.25rem 1.5rem
+  @extend $block
+  background-color $notification-background-color
+  border-radius $notification-radius
+  padding $notification-padding
   position relative
+  a:not(.button):not(.dropdown-item)
+    color currentColor
+    text-decoration underline
+  strong
+    color currentColor
   code,
   pre
-    background $white
+    background $notification-code-background-color
   pre code
     background transparent
-  .delete
+  & > .delete
     position absolute
-    right 0.5em
-    top 0.5em
+    right 0.5rem
+    top 0.5rem
   .title,
   .subtitle,
   .content
-    color inherit
+    color currentColor
   // Colors
-  for name, pair in $colors
-    color = pair['1']
-    color-invert = pair['2']
-    &.is-{name}
-      background-color color
-      color color-invert
+  for $name, $pair in $colors
+    $color = $pair['1']
+    $color-invert = $pair['2']
+    &.is-{$name}
+      background-color $color
+      color $color-invert

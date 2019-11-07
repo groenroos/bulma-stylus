@@ -1,12 +1,44 @@
+$body-background-color ?= $scheme-main
+$body-size ?= 16px
+$body-min-width ?= 300px
+$body-rendering ?= optimizeLegibility
+$body-family ?= $family-primary
+$body-overflow-x ?= hidden
+$body-overflow-y ?= scroll
+
+$body-color ?= $text
+$body-font-size ?= 1em
+$body-weight ?= $weight-normal
+$body-line-height ?= 1.5
+
+$code-family ?= $family-code
+$code-padding ?= 0.25em 0.5em 0.25em
+$code-weight ?= normal
+$code-size ?= 0.875em
+
+$small-font-size ?= 0.875em
+
+$hr-background-color ?= $background
+$hr-height ?= 2px
+$hr-margin ?= 1.5rem 0
+
+$strong-color ?= $text-strong
+$strong-weight ?= $weight-bold
+
+$pre-font-size ?= 0.875em
+$pre-padding ?= 1.25rem 1.5rem
+$pre-code-font-size ?= 1em
+
 html
-  background-color $body-background
+  background-color $body-background-color
   font-size $body-size
   -moz-osx-font-smoothing grayscale
   -webkit-font-smoothing antialiased
-  min-width 300px
-  overflow-x hidden
-  overflow-y scroll
-  text-rendering optimizeLegibility
+  min-width $body-min-width
+  overflow-x $body-overflow-x
+  overflow-y $body-overflow-y
+  text-rendering $body-rendering
+  text-size-adjust 100%
 
 article,
 aside,
@@ -22,19 +54,19 @@ button,
 input,
 select,
 textarea
-  font-family $family-primary
+  font-family $body-family
 
 code,
 pre
   -moz-osx-font-smoothing auto
   -webkit-font-smoothing auto
-  font-family $family-code
+  font-family $code-family
 
 body
-  color $text
-  font-size 1rem
-  font-weight $weight-normal
-  line-height 1.5
+  color $body-color
+  font-size $body-font-size
+  font-weight $body-weight
+  line-height $body-line-height
 
 // Inline
 
@@ -42,25 +74,27 @@ a
   color $link
   cursor pointer
   text-decoration none
-  transition none $speed $easing
+  strong
+    color currentColor
   &:hover
     color $link-hover
 
 code
   background-color $code-background
   color $code
-  font-size 0.8em
-  font-weight normal
-  padding 0.25em 0.5em 0.25em
+  font-size $code-size
+  font-weight $code-weight
+  padding $code-padding
 
 hr
-  background-color $border
+  background-color $hr-background-color
   border none
   display block
-  height 1px
-  margin 1.5rem 0
+  height $hr-height
+  margin $hr-margin
 
 img
+  height auto
   max-width 100%
 
 input[type="checkbox"],
@@ -68,37 +102,41 @@ input[type="radio"]
   vertical-align baseline
 
 small
-  font-size 0.8em
+  font-size $small-font-size
 
 span
   font-style inherit
   font-weight inherit
 
 strong
-  color $text-strong
-  font-weight $weight-bold
+  color $strong-color
+  font-weight $strong-weight
 
 // Block
 
+fieldset
+  border none
+
 pre
+  overflow-touch()
   background-color $pre-background
   color $pre
-  font-size 0.8em
+  font-size $pre-font-size
+  overflow-x auto
+  padding $pre-padding
   white-space pre
   word-wrap normal
   code
-    background none
-    color inherit
-    display block
-    font-size 1em
-    overflow-x auto
-    padding 1.25rem 1.5rem
+    background-color transparent
+    color currentColor
+    font-size $pre-code-font-size
+    padding 0
 
 table
-  width 100%
   td,
   th
-    text-align left
     vertical-align top
+    &:not([align])
+      text-align left
   th
     color $text-strong
