@@ -95,7 +95,7 @@ findDarkColor($color)
     return lightness($color, max($base-l, $target-l))
   return $text-strong
 
-/* Invisible bif replacements to match the behaviour of Sass */
+/* Bif replacements to match the behaviour of Sass */
 
 bulma-stylus-darken($color, $amount)
   return lightness($color, lightness($color) - $amount)
