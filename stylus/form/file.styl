@@ -29,7 +29,7 @@ $file-name-max-width ?= 16em
       &:hover,
       &.is-hovered
         .file-cta
-          background-color darken($color, 2.5%)
+          background-color bulma-stylus-darken($color, 2.5%)
           border-color transparent
           color $color-invert
       &:focus,
@@ -41,7 +41,7 @@ $file-name-max-width ?= 16em
       &:active,
       &.is-active
         .file-cta
-          background-color darken($color, 5%)
+          background-color bulma-stylus-darken($color, 5%)
           border-color transparent
           color $color-invert
   // Sizes
@@ -125,16 +125,16 @@ $file-name-max-width ?= 16em
   position relative
   &:hover
     .file-cta
-      background-color darken($file-cta-background-color, 2.5%)
+      background-color bulma-stylus-darken($file-cta-background-color, 2.5%)
       color $file-cta-hover-color
     .file-name
-      border-color darken($file-name-border-color, 2.5%)
+      border-color bulma-stylus-darken($file-name-border-color, 2.5%)
   &:active
     .file-cta
-      background-color darken($file-cta-background-color, 5%)
+      background-color bulma-stylus-darken($file-cta-background-color, 5%)
       color $file-cta-active-color
     .file-name
-      border-color darken($file-name-border-color, 5%)
+      border-color bulma-stylus-darken($file-name-border-color, 5%)
 
 .file-input
   height 100%

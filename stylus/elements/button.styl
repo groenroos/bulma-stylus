@@ -107,7 +107,7 @@ button-large()
       color $button-text-hover-color
     &:active,
     &.is-active
-      background-color darken($button-text-hover-background-color, 5%)
+      background-color bulma-stylus-darken($button-text-hover-background-color, 5%)
       color $button-text-hover-color
     &[disabled],
     fieldset[disabled] &
@@ -123,7 +123,7 @@ button-large()
       color $color-invert
       &:hover,
       &.is-hovered
-        background-color darken($color, 2.5%)
+        background-color bulma-stylus-darken($color, 2.5%)
         border-color transparent
         color $color-invert
       &:focus,
@@ -134,7 +134,7 @@ button-large()
           box-shadow $button-focus-box-shadow-size rgba($color, 0.25)
       &:active,
       &.is-active
-        background-color darken($color, 5%)
+        background-color bulma-stylus-darken($color, 5%)
         border-color transparent
         color $color-invert
       &[disabled],
@@ -147,7 +147,7 @@ button-large()
         color $color
         &:hover,
         &.is-hovered
-          background-color darken($color-invert, 5%)
+          background-color bulma-stylus-darken($color-invert, 5%)
         &[disabled],
         fieldset[disabled] &
           background-color $color-invert
@@ -215,12 +215,12 @@ button-large()
           color $color-dark
           &:hover,
           &.is-hovered
-            background-color darken($color-light, 2.5%)
+            background-color bulma-stylus-darken($color-light, 2.5%)
             border-color transparent
             color $color-dark
           &:active,
           &.is-active
-            background-color darken($color-light, 5%)
+            background-color bulma-stylus-darken($color-light, 5%)
             border-color transparent
             color $color-dark
   // Sizes
