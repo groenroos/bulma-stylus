@@ -259,17 +259,3 @@ overlay($offset = 0)
 
 $overlay
   overlay()
-
-/* Additional invisible mixins to match Sass precision */
-
-width($value, $important = null, $rule = "width")
-  if typeof($value) == "unit"
-    {$rule} round($value, 5) $important
-  else
-    {$rule} $value $important
-
-margin-left($value, $important = null)
-  width($value, $important, "margin-left")
-
-margin-right($value, $important = null)
-  width($value, $important, "margin-right")
