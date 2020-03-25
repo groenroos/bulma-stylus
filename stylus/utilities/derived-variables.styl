@@ -156,3 +156,59 @@ $colors ?= mergeColorMaps({
 $shades ?= mergeColorMaps({"black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis}, $custom-shades)
 
 $sizes ?= $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7
+
+getLightness($color)
+  $min= 96%
+  if typeof($color) == 'rgba' || typeof($color) == 'hsla'
+    return max($min, lightness($color))
+
+  return $min
+
+getDarkness($color)
+  $min= 29%
+  if typeof($color) == 'rgba' || typeof($color) == 'hsla'
+    $luminance= colorLuminance($color)
+    $luminance-delta= (0.53 - $luminance)
+    $target= round($min + ($luminance-delta * 53))
+    return max($min, $target)
+
+  return $max
+
+css-variable($color, $name, $cssvar-invert)
+  $hue= hue($color)
+  $saturation= saturation($color)
+  $lightness= lightness($color)
+  $base= $prefix+$name
+
+  {'--'+$base}-h $hue
+  {'--'+$base}-s $saturation
+  {'--'+$base}-l $lightness
+  {'--'+$base} s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), calc(var(--'+$base+'-l)))');
+  {'--'+$base}-hover s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), calc(var(--'+$base+'-l) - 5%))');
+  {'--'+$base}-active s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), calc(var(--'+$base+'-l) - 10%))');
+
+  $l= getLightness($color)
+  {'--'+$base}-light s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+$l+')');
+  {'--'+$base}-light-hover s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+($l - 2%)+')');
+  {'--'+$base}-light-active s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+($l - 4%)+')');
+
+  $d= getDarkness($color)
+  {'--'+$base}-dark s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+$d+')');
+  {'--'+$base}-dark-hover s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+($d - 5%)+')');
+  {'--'+$base}-dark-active s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), '+($d - 10%)+')');
+
+  if $cssvar-invert
+    {'--'+$base}-invert var(unquote('--'+$prefix+$cssvar-invert))
+  else
+    {'--'+$base}-invert findColorInvert($color)
+
+:root
+  for $name, $components in $colors
+    $color= $components['1']
+    $color-invert= $components['2']
+    $cssvar-invert= false
+
+    if length($components) >= 5
+      $cssvar-invert= $components['5']
+
+    css-variable($color, $name, $cssvar-invert)

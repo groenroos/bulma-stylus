@@ -14,14 +14,21 @@ $button-hover-border-color ?= $link-hover-border
 $button-focus-color ?= $link-focus
 $button-focus-border-color ?= $link-focus-border
 $button-focus-box-shadow-size ?= 0 0 0 0.125em
-$button-focus-box-shadow-color ?= rgba($link, 0.25)
+$button-focus-box-shadow-color ?= bulmaRgba($link, 0.25)
 
 $button-active-color ?= $link-active
 $button-active-border-color ?= $link-active-border
 
 $button-text-color ?= $text
+$button-text-decoration ?= underline
 $button-text-hover-background-color ?= $background
 $button-text-hover-color ?= $text-strong
+$button-text-focus-background-color ?= $border-light
+$button-text-focus-border-color ?= $border
+$button-text-focus-color ?= $text-strong
+$button-text-focus-box-shadow-color ?= $border-light
+$button-text-active-background-color ?= $border-light
+$button-text-active-color ?= $text-strong
 
 $button-disabled-background-color ?= $scheme-main
 $button-disabled-border-color ?= $border
@@ -98,7 +105,7 @@ button-large()
     background-color transparent
     border-color transparent
     color $button-text-color
-    text-decoration underline
+    text-decoration $button-text-decoration
     &:hover,
     &.is-hovered,
     &:focus,
@@ -107,7 +114,7 @@ button-large()
       color $button-text-hover-color
     &:active,
     &.is-active
-      background-color bulma-stylus-darken($button-text-hover-background-color, 5%)
+      background-color bulmaDarken($button-text-hover-background-color, 5%)
       color $button-text-hover-color
     &[disabled],
     fieldset[disabled] &
@@ -123,7 +130,7 @@ button-large()
       color $color-invert
       &:hover,
       &.is-hovered
-        background-color bulma-stylus-darken($color, 2.5%)
+        background-color bulmaDarken($color, 2.5%)
         border-color transparent
         color $color-invert
       &:focus,
@@ -131,10 +138,10 @@ button-large()
         border-color transparent
         color $color-invert
         &:not(:active)
-          box-shadow $button-focus-box-shadow-size rgba($color, 0.25)
+          box-shadow $button-focus-box-shadow-size bulmaRgba($color, 0.25)
       &:active,
       &.is-active
-        background-color bulma-stylus-darken($color, 5%)
+        background-color bulmaDarken($color, 5%)
         border-color transparent
         color $color-invert
       &[disabled],
@@ -147,7 +154,7 @@ button-large()
         color $color
         &:hover,
         &.is-hovered
-          background-color bulma-stylus-darken($color-invert, 5%)
+          background-color bulmaDarken($color-invert, 5%)
         &[disabled],
         fieldset[disabled] &
           background-color $color-invert
@@ -215,12 +222,12 @@ button-large()
           color $color-dark
           &:hover,
           &.is-hovered
-            background-color bulma-stylus-darken($color-light, 2.5%)
+            background-color bulmaDarken($color-light, 2.5%)
             border-color transparent
             color $color-dark
           &:active,
           &.is-active
-            background-color bulma-stylus-darken($color-light, 5%)
+            background-color bulmaDarken($color-light, 5%)
             border-color transparent
             color $color-dark
   // Sizes
@@ -320,3 +327,207 @@ button-large()
       .button:not(.is-fullwidth)
         margin-left 0.25rem
         margin-right 0.25rem
+
+.vbuttons
+  align-items center
+  display flex
+  flex-wrap wrap
+  justify-content flex-start
+  &:not(:last-child)
+    margin-bottom 1rem
+  .vbutton
+    margin-right 1em
+
+.vbutton
+  --background-color $button-background-color
+  --border-color $button-border-color
+  --color: $button-color
+  --hover-border-color $button-hover-border-color
+  --hover-color $button-hover-color
+  --focus-border-color $button-focus-border-color
+  --focus-color $button-focus-color
+  --focus-box-shadow-color $button-focus-box-shadow-color
+  --active-border-color $button-active-border-color
+  --active-color $button-active-color
+  --outlined-color $button-color
+  --outlined-hover-background-color $button-color
+  --outlined-hover-color $button-color-invert
+  --outlined-active-background-color darken($button-color, 5%)
+  --outlined-active-color $button-color-invert
+  --outlined-focus-box-shadow-color $border
+  @extend $control
+  @extend $unselectable
+  background-color var(--background-color)
+  border-color var(--border-color)
+  border-width $button-border-width
+  color var(--color)
+  cursor pointer
+  if $button-family
+    font-family $button-family
+  justify-content center
+  padding-bottom $button-padding-vertical
+  padding-left $button-padding-horizontal
+  padding-right $button-padding-horizontal
+  padding-top $button-padding-vertical
+  text-align center
+  white-space nowrap
+  strong
+    color inherit
+  .icon
+    &,
+    &.is-small,
+    &.is-medium,
+    &.is-large
+      height 1.5em
+      width 1.5em
+    &:first-child:not(:last-child)
+      margin-left "calc(-0.375em - %s)" % $button-border-width
+      margin-right 0.1875em
+    &:last-child:not(:first-child)
+      margin-left 0.1875em
+      margin-right "calc(-0.375em - %s)" % $button-border-width
+    &:first-child:last-child
+      margin-left "calc(-0.375em - %s)" % $button-border-width
+      margin-right "calc(-0.375em - %s)" % $button-border-width
+  &:hover,
+  &.is-hovered
+    background-color var(--hover-background-color)
+    border-color var(--hover-border-color)
+    color var(--hover-color)
+  &:focus,
+  &.is-focused
+    border-color var(--focus-border-color)
+    &:not(:active)
+      box-shadow $button-focus-box-shadow-size var(--focus-box-shadow-color)
+  &:active,
+  &.is-active
+    background-color var(--active-background-color)
+    border-color var(--active-border-color)
+    color var(--active-color)
+  &.is-outlined
+    --background-color: transparent
+    --border-color $button-color
+    --color $button-color
+    --hover-background-color $button-color
+    --hover-color $button-color-invert
+    --active-background-color darken($button-color, 5%)
+    --active-color $button-color-invert
+    --focus-border-color $button-color
+    --focus-box-shadow-color $border
+    &:not(:hover):not(.is-hovered):not(:active):not(.is-active)
+      background-color transparent
+    &:not(.is-inverted):not([disabled])
+      &:hover,
+      &.is-hovered,
+      &:active,
+      &.is-active
+        border-color transparent
+  &.is-outlined.is-inverted
+    background-color transparent
+  &.is-text
+    --background-color transparent
+    --border-color transparent
+    --color $text
+    --hover-background-color $button-text-hover-background-color
+    --hover-border-color transparent
+    --hover-color $button-text-hover-color
+    --focus-background-color $button-text-focus-background-color
+    --focus-border-color transparent
+    --focus-border-color $button-text-focus-border-color
+    --focus-color $button-text-focus-color
+    --focus-box-shadow-color $button-text-focus-box-shadow-color
+    --active-background-color $button-text-active-background-color
+    --active-border-color transparent
+    --active-color $button-text-active-color
+    text-decoration underline
+  for $name, $trio in $colors
+    $base= $prefix+$name
+    &.is-{$name}
+      --background-color s('var(--'+$base+')')
+      --border-color transparent
+      --color s('var(--'+$base+'-invert)')
+      --hover-background-color s('var(--'+$base+'-hover)')
+      --hover-border-color transparent
+      --hover-color s('var(--'+$base+'-invert)')
+      --focus-background-color s('var(--'+$base+')')
+      --focus-border-color transparent
+      --focus-color s('var(--'+$base+'-invert)')
+      --focus-box-shadow-color s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), 86%)')
+      --active-background-color s('var(--'+$base+'-active)')
+      --active-border-color transparent
+      --active-color s('var(--'+$base+'-invert)')
+      --outlined-color s('var(--'+$base+')')
+      &.is-inverted
+        --background-color s('var(--'+$base+'-invert)')
+        --color s('var(--'+$base+')')
+        --hover-background-color s('var(--'+$base+'-invert)')
+        --hover-color s('var(--'+$base+'-hover)')
+        --active-background-color s('var(--'+$base+'-invert)')
+        --active-color s('var(--'+$base+'-active)')
+      &.is-outlined
+        --background-color transparent
+        --border-color s('var(--'+$base+')')
+        --color: s('var(--'+$base+')')
+        --hover-background-color: s('var(--'+$base+')')
+        --focus-border-color: s('var(--'+$base+')')
+      &.is-outlined.is-inverted
+        --background-color: transparent
+        --border-color s('var(--'+$base+'-invert)')
+        --color s('var(--'+$base+'-invert)')
+        --hover-border-color s('var(--'+$base+'-hover)')
+        --hover-color s('var(--'+$base+'-invert)')
+        --active-border-color s('var(--'+$base+'-active)')
+        --active-color s('var(--'+$base+'-active)')
+        --focus-box-shadow-color s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), 14%)')
+      &.is-light
+        --background-color s('var(--'+$base+'-light)')
+        --border-color transparent
+        --color s('var(--'+$base+'-dark)')
+        --hover-background-color s('var(--'+$base+'-light-hover)')
+        --hover-border-color transparent
+        --hover-color s('var(--'+$base+'-dark)')
+        --focus-background-color s('var(--'+$base+'-light)')
+        --focus-border-color transparent
+        --focus-color s('var(--'+$base+'-dark)')
+        --focus-box-shadow-color s('hsl(var(--'+$base+'-h), calc(var(--'+$base+'-s)), 86%)')
+        --active-background-color s('var(--'+$base+'-light-active)')
+        --active-border-color transparent
+        --active-color s('var(--'+$base+'-dark)')
+  // Sizes
+  &.is-small
+    button-small()
+  &.is-normal
+    button-normal()
+  &.is-medium
+    button-medium()
+  &.is-large
+    button-large()
+  // Modifiers
+  &[disabled],
+  fieldset[disabled] &
+    --hover-background-color var(--background-color) !important
+    --hover-border-color var(--border-color) !important
+    --hover-color var(--color) !important
+    opacity: $button-disabled-opacity
+  &.is-fullwidth
+    display flex
+    width 100%
+  &.is-loading
+    color: transparent !important
+    pointer-events none
+    &::after
+      @extend $loader
+      center(1em)
+      border-color transparent transparent var(--color) var(--color) !important
+      position absolute !important
+  &.is-static
+    --background-color $button-static-background-color
+    --border-color $button-static-border-color
+    --color $button-static-color
+    box-shadow none
+    pointer-events none
+  &.is-rounded
+    border-radius $radius-rounded
+    padding-left 1.25em
+    padding-right 1.25em
+

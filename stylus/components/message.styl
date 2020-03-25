@@ -51,7 +51,7 @@ $message-colors ?= $colors
         $color-luminance = colorLuminance($color)
         $darken-percentage = $color-luminance * 70%
         $desaturate-percentage = $color-luminance * 30%
-        $color-dark = desaturate(bulma-stylus-darken($color, $darken-percentage), $desaturate-percentage)
+        $color-dark = desaturate(bulmaDarken($color, $darken-percentage), $desaturate-percentage)
     else
       $color-lightning = max((100% - lightness($color)) - 2%, 0%)
       $color-light = bulma-stylus-lighten($color, $color-lightning)

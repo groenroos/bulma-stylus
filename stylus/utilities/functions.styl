@@ -72,6 +72,8 @@ powerNumber($number, $exp)
   return $number ** $exp
 
 colorLuminance($color)
+  if typeof($color) != 'rgba' and typeof($color) != 'hsla'
+    return 0.55
   $color-rgb = {'red': red($color),'green': green($color),'blue': blue($color)}
   for $name, $value in $color-rgb
     $adjusted = 0
@@ -107,10 +109,21 @@ findDarkColor($color)
     return lightness($color, max($base-l, $target-l))
   return $text-strong
 
+bulmaRgba($color, $alpha)
+  if typeof($color) != 'rgba' and typeof($color) != 'hsla'
+    return $color
+
+  return rgba($color, $alpha)
+
+bulmaDarken($color, $amount)
+  if typeof($color) != 'rgba' and typeof($color) != 'hsla'
+    return $color
+
+  return lightness($color, lightness($color) - $amount)
+
 /* Bif replacements to match the behaviour of Sass */
 
-bulma-stylus-darken($color, $amount)
-  return lightness($color, lightness($color) - $amount)
+bulma-stylus-darken = bulmaDarken
 
 bulma-stylus-lighten($color, $amount)
   return lightness($color, lightness($color) + $amount)
