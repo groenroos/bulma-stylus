@@ -1,6 +1,6 @@
 {
   "name": "bulma-stylus",
-  "version": "0.8.1-rc.3",
+  "version": "0.8.2",
   "homepage": "http://github.com/groenroos/bulma-stylus",
   "author": "Oskari Groenroos <oskari@groenroos.fi> (http://groenroos.fi)",
   "contributors": [
@@ -26,9 +26,9 @@
     "url": "https://github.com/groenroos/bulma-stylus/issues"
   },
   "devDependencies": {
-    "autoprefixer": "9.6.4",
+    "autoprefixer": "9.7.6",
     "clean-css-cli": "4.3.0",
-    "postcss-cli": "6.1.3",
+    "postcss-cli": "7.1.0",
     "rimraf": "2.7.1",
     "stylelint": "^11.1.1",
     "stylus": "^0.54.7"
