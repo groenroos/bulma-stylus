@@ -34,12 +34,16 @@
     "stylus": "^0.54.7"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-stylus && npm run build-autoprefix && npm run build-cleancss",
+    "build": "npm run build-stylus && npm run build-autoprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css && stylelint css/bulma.css --fix -q",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
-    "build-clean": "rimraf css",
     "build-stylus": "stylus bulma.styl --out css --sourcemap",
-    "deploy": "npm run build",
+    "clean": "rimraf css",
+    "rtl": "npm run rtl-stylus && npm run rtl-autoprefix && npm run rtl-cleancss",
+    "rtl-stylus": "stylus bulma-rtl.styl --out css --sourcemap",
+    "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css && stylelint css/bulma-rtl.css --fix -q",
+    "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
+    "deploy": "npm run clean && npm run build && npm run rtl",
     "start": "stylus -w bulma.styl --out css"
   },
   "files": [
