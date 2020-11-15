@@ -62,7 +62,7 @@ $text-strong ?= $grey-darker
 
 // Code colors
 
-$code ?= $red
+$code ?= bulma-stylus-darken($red, 15%)
 $code-background ?= $background
 
 $pre ?= $text
@@ -153,6 +153,7 @@ $colors ?= mergeColorMaps({
     '3': $danger-light,
     '4': $danger-dark
   }}, $custom-colors)
+
 $shades ?= mergeColorMaps({"black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis}, $custom-shades)
 
 $sizes ?= $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7
