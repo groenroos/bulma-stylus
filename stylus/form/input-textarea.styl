@@ -14,25 +14,25 @@ $input-textarea
   // Colors
   for $name, $pair in $textarea-colors
     $color = $pair['1']
-    &.is-{$name}
+    .is-{$name}&
       border-color $color
       &:focus,
-      &.is-focused,
+      .is-focused&,
       &:active,
-      &.is-active
+      .is-active&
         box-shadow $input-focus-box-shadow-size rgba($color, 0.25)
   // Sizes
-  &.is-small
+  .is-small&
     control-small()
-  &.is-medium
+  .is-medium&
     control-medium()
-  &.is-large
+  .is-large&
     control-large()
   // Modifiers
-  &.is-fullwidth
+  .is-fullwidth&
     display block
     width 100%
-  &.is-inline
+  .is-inline&
     display inline
     width auto
 
