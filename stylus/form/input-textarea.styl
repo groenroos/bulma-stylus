@@ -2,6 +2,8 @@ $textarea-padding ?= $control-padding-horizontal
 $textarea-max-height ?= 40em
 $textarea-min-height ?= 8em
 
+$textarea-colors ?= $form-colors
+
 $input-textarea
   @extend $input
   box-shadow $input-shadow
@@ -10,7 +12,7 @@ $input-textarea
   &[readonly]
     box-shadow none
   // Colors
-  for $name, $pair in $colors
+  for $name, $pair in $textarea-colors
     $color = $pair['1']
     &.is-{$name}
       border-color $color
