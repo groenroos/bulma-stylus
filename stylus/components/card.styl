@@ -1,6 +1,8 @@
 $card-color ?= $text
 $card-background-color ?= $scheme-main
 $card-shadow ?= 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+$card-radius ?= 0.25rem
+$card-overflow ?= hidden
 
 $card-header-background-color ?= transparent
 $card-header-color ?= $text-strong
@@ -19,9 +21,11 @@ $card-media-margin ?= $block-spacing
 
 .card
   background-color $card-background-color
+  border-radius $card-radius
   box-shadow $card-shadow
   color $card-color
   max-width 100%
+  overflow $card-overflow
   position relative
 
 .card-header
@@ -70,7 +74,7 @@ $card-media-margin ?= $block-spacing
   justify-content center
   padding $card-footer-padding
   &:not(:last-child)
-    border-right $card-footer-border-top
+    ltr-property("border", $card-footer-border-top)
 
 // Combinations
 

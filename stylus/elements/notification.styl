@@ -2,13 +2,20 @@ $notification-background-color ?= $background
 $notification-code-background-color ?= $scheme-main
 $notification-radius ?= $radius
 $notification-padding ?= 1.25rem 2.5rem 1.25rem 1.5rem
+$notification-padding-ltr ?= 1.25rem 2.5rem 1.25rem 1.5rem
+$notification-padding-rtl ?= 1.25rem 1.5rem 1.25rem 2.5rem
+
+$notification-colors ?= $colors
 
 .notification
   @extend $block
   background-color $notification-background-color
   border-radius $notification-radius
-  padding $notification-padding
   position relative
+  +ltr()
+    padding $notification-padding-ltr
+  +rtl()
+    padding $notification-padding-rtl
   a:not(.button):not(.dropdown-item)
     color currentColor
     text-decoration underline
@@ -20,17 +27,24 @@ $notification-padding ?= 1.25rem 2.5rem 1.25rem 1.5rem
   pre code
     background transparent
   & > .delete
+    ltr-position(0.5rem)
     position absolute
-    right 0.5rem
     top 0.5rem
   .title,
   .subtitle,
   .content
     color currentColor
   // Colors
-  for $name, $pair in $colors
+  for $name, $pair in $notification-colors
     $color = $pair['1']
     $color-invert = $pair['2']
     &.is-{$name}
       background-color $color
       color $color-invert
+      // If light and dark colors are provided
+      if length($pair) >= 4
+        $color-light = $pair['3']
+        $color-dark = $pair['4']
+        &.is-light
+          background-color $color-light
+          color $color-dark

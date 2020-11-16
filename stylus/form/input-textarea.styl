@@ -2,6 +2,8 @@ $textarea-padding ?= $control-padding-horizontal
 $textarea-max-height ?= 40em
 $textarea-min-height ?= 8em
 
+$textarea-colors ?= $form-colors
+
 $input-textarea
   @extend $input
   box-shadow $input-shadow
@@ -10,27 +12,27 @@ $input-textarea
   &[readonly]
     box-shadow none
   // Colors
-  for $name, $pair in $colors
+  for $name, $pair in $textarea-colors
     $color = $pair['1']
-    &.is-{$name}
+    .is-{$name}&
       border-color $color
       &:focus,
-      &.is-focused,
+      .is-focused&,
       &:active,
-      &.is-active
+      .is-active&
         box-shadow $input-focus-box-shadow-size rgba($color, 0.25)
   // Sizes
-  &.is-small
+  .is-small&
     control-small()
-  &.is-medium
+  .is-medium&
     control-medium()
-  &.is-large
+  .is-large&
     control-large()
   // Modifiers
-  &.is-fullwidth
+  .is-fullwidth&
     display block
     width 100%
-  &.is-inline
+  .is-inline&
     display inline
     width auto
 

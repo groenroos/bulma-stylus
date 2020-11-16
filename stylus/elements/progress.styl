@@ -4,6 +4,8 @@ $progress-border-radius ?= $radius-rounded
 
 $progress-indeterminate-duration ?= 1.5s
 
+$progress-colors ?= $colors
+
 .progress
   @extend $block
   -moz-appearance none
@@ -25,7 +27,7 @@ $progress-indeterminate-duration ?= 1.5s
     background-color $progress-value-background-color
     border none
   // Colors
-  for $name, $pair in $colors
+  for $name, $pair in $progress-colors
     $color = $pair['1']
     &.is-{$name}
       &::-webkit-progress-value
@@ -51,6 +53,8 @@ $progress-indeterminate-duration ?= 1.5s
       background-color transparent
     &::-moz-progress-bar
       background-color transparent
+    &::-ms-fill
+      animation-name none
 
   // Sizes
   &.is-small

@@ -394,13 +394,13 @@ a.box:active {
 }
 
 .button .icon:first-child:not(:last-child) {
-  margin-left: calc(-0.5em - 1px);
-  margin-right: 0.25em;
+  margin-right: calc(-0.5em - 1px);
+  margin-left: 0.25em;
 }
 
 .button .icon:last-child:not(:first-child) {
-  margin-left: 0.25em;
-  margin-right: calc(-0.5em - 1px);
+  margin-right: 0.25em;
+  margin-left: calc(-0.5em - 1px);
 }
 
 .button .icon:first-child:last-child {
@@ -1639,7 +1639,7 @@ a.box:active {
 }
 
 .buttons .button:not(:last-child):not(.is-fullwidth) {
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .buttons:last-child {
@@ -1671,11 +1671,11 @@ a.box:active {
 .buttons.has-addons .button:not(:last-child) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  margin-right: -1px;
+  margin-left: -1px;
 }
 
 .buttons.has-addons .button:last-child {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 .buttons.has-addons .button:hover, .buttons.has-addons .button.is-hovered {
@@ -1815,13 +1815,13 @@ a.box:active {
 
 .content blockquote {
   background-color: #f5f5f5;
-  border-left: 5px solid #dbdbdb;
+  border-right: 5px solid #dbdbdb;
   padding: 1.25em 1.5em;
 }
 
 .content ol {
   list-style-position: outside;
-  margin-left: 2em;
+  margin-right: 2em;
   margin-top: 1em;
 }
 
@@ -1847,7 +1847,7 @@ a.box:active {
 
 .content ul {
   list-style: disc outside;
-  margin-left: 2em;
+  margin-right: 2em;
   margin-top: 1em;
 }
 
@@ -1861,7 +1861,7 @@ a.box:active {
 }
 
 .content dd {
-  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .content figure {
@@ -2093,7 +2093,7 @@ a.box:active {
   background-color: #f5f5f5;
   border-radius: 4px;
   position: relative;
-  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.25rem 2.5rem;
 }
 
 .notification a:not(.button):not(.dropdown-item) {
@@ -2114,7 +2114,7 @@ a.box:active {
 }
 
 .notification > .delete {
-  right: 0.5rem;
+  left: 0.5rem;
   position: absolute;
   top: 0.5rem;
 }
@@ -2641,7 +2641,7 @@ a.box:active {
 }
 
 .tags .tag:not(:last-child) {
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .tags:last-child {
@@ -2682,18 +2682,18 @@ a.box:active {
 }
 
 .tags.has-addons .tag {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 .tags.has-addons .tag:not(:first-child) {
-  margin-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .tags.has-addons .tag:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .tag:not(body) {
@@ -2712,8 +2712,8 @@ a.box:active {
 }
 
 .tag:not(body) .delete {
-  margin-left: 0.25rem;
-  margin-right: -0.375rem;
+  margin-right: 0.25rem;
+  margin-left: -0.375rem;
 }
 
 .tag:not(body).is-white {
@@ -2809,22 +2809,22 @@ a.box:active {
 }
 
 .tag:not(body) .icon:first-child:not(:last-child) {
-  margin-left: -0.375em;
-  margin-right: 0.1875em;
+  margin-right: -0.375em;
+  margin-left: 0.1875em;
 }
 
 .tag:not(body) .icon:last-child:not(:first-child) {
-  margin-left: 0.1875em;
-  margin-right: -0.375em;
+  margin-right: 0.1875em;
+  margin-left: -0.375em;
 }
 
 .tag:not(body) .icon:first-child:last-child {
-  margin-left: -0.375em;
   margin-right: -0.375em;
+  margin-left: -0.375em;
 }
 
 .tag:not(body).is-delete {
-  margin-left: 1px;
+  margin-right: 1px;
   padding: 0;
   position: relative;
   width: 2em;
@@ -3239,7 +3239,7 @@ a.tag:hover {
 }
 
 .radio + .radio {
-  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .select {
@@ -3255,13 +3255,13 @@ a.tag:hover {
 
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: #3273dc;
-  right: 1.125em;
+  left: 1.125em;
   z-index: 4;
 }
 
 .select.is-rounded select {
   border-radius: 290486px;
-  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .select select {
@@ -3281,7 +3281,7 @@ a.tag:hover {
 }
 
 .select select:not([multiple]) {
-  padding-right: 2.5em;
+  padding-left: 2.5em;
 }
 
 .select select[multiple] {
@@ -3485,7 +3485,7 @@ a.tag:hover {
 .select.is-loading::after {
   margin-top: 0;
   position: absolute;
-  right: 0.625em;
+  left: 0.625em;
   top: 0.625em;
   transform: none;
 }
@@ -3925,7 +3925,7 @@ a.tag:hover {
   display: flex;
   height: 1em;
   justify-content: center;
-  margin-right: 0.5em;
+  margin-left: 0.5em;
   width: 1em;
 }
 
@@ -4012,7 +4012,7 @@ a.tag:hover {
 }
 
 .field.has-addons .control:not(:last-child) {
-  margin-right: -1px;
+  margin-left: -1px;
 }
 
 .field.has-addons .control:not(:first-child):not(:last-child) .button, .field.has-addons .control:not(:first-child):not(:last-child) .input, .field.has-addons .control:not(:first-child):not(:last-child) .select select {
@@ -4020,13 +4020,13 @@ a.tag:hover {
 }
 
 .field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .field.has-addons .control:last-child:not(:only-child) .button, .field.has-addons .control:last-child:not(:only-child) .input, .field.has-addons .control:last-child:not(:only-child) .select select {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .field.has-addons .control .button:not([disabled]):hover, .field.has-addons .control .input:not([disabled]):hover, .field.has-addons .control .select select:not([disabled]):hover, .field.has-addons .control .button:not([disabled]).is-hovered, .field.has-addons .control .input:not([disabled]).is-hovered, .field.has-addons .control .select select:not([disabled]).is-hovered {
@@ -4070,7 +4070,7 @@ a.tag:hover {
 
 .field.is-grouped > .control:not(:last-child) {
   margin-bottom: 0;
-  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
 
 .field.is-grouped > .control.is-expanded {
@@ -4123,7 +4123,7 @@ a.tag:hover {
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 0;
-    margin-right: 1.5rem;
+    margin-left: 1.5rem;
     text-align: right;
   }
 
@@ -4172,7 +4172,7 @@ a.tag:hover {
   }
 
   .field-body > .field:not(:last-child) {
-    margin-right: 0.75rem;
+    margin-left: 0.75rem;
   }
 }
 
@@ -4228,7 +4228,7 @@ a.tag:hover {
 
 .control.is-loading::after {
   position: absolute !important;
-  right: 0.625em;
+  left: 0.625em;
   top: 0.625em;
   z-index: 4;
 }
@@ -4269,7 +4269,7 @@ a.tag:hover {
 }
 
 .breadcrumb li:first-child a {
-  padding-left: 0;
+  padding-right: 0;
 }
 
 .breadcrumb li.is-active a {
@@ -4291,11 +4291,11 @@ a.tag:hover {
 }
 
 .breadcrumb .icon:first-child {
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .breadcrumb .icon:last-child {
-  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .breadcrumb.is-centered ol, .breadcrumb.is-centered ul {
@@ -4400,7 +4400,7 @@ a.tag:hover {
 }
 
 .card-footer-item:not(:last-child) {
-  border-right: 1px solid #ededed;
+  border-left: 1px solid #ededed;
 }
 
 .card .media:not(:last-child) {
@@ -4431,7 +4431,7 @@ a.tag:hover {
 
 .dropdown-menu {
   display: none;
-  left: 0;
+  right: 0;
   min-width: 12rem;
   padding-top: 4px;
   position: absolute;
@@ -4457,7 +4457,7 @@ a.tag:hover {
 }
 
 a.dropdown-item, button.dropdown-item {
-  padding-right: 3rem;
+  padding-left: 3rem;
   text-align: inherit;
   white-space: nowrap;
   width: 100%;
@@ -4509,7 +4509,7 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 
 .level.is-mobile .level-item:not(:last-child) {
   margin-bottom: 0;
-  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
 
 .level.is-mobile .level-item:not(.is-narrow) {
@@ -4557,7 +4557,7 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 
 @media screen and (min-width: 769px), print {
   .level-left .level-item:not(:last-child), .level-right .level-item:not(:last-child) {
-    margin-right: 0.75rem;
+    margin-left: 0.75rem;
   }
 }
 
@@ -4635,11 +4635,11 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 }
 
 .media-left {
-  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .media-right {
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .media-content {
@@ -4693,9 +4693,9 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 }
 
 .menu-list li ul {
-  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
   margin: 0.75em;
-  padding-left: 0.75em;
+  padding-right: 0.75em;
 }
 
 .menu-label {
@@ -4892,7 +4892,7 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 .message-header .delete {
   flex-grow: 0;
   flex-shrink: 0;
-  margin-left: 0.75em;
+  margin-right: 0.75em;
 }
 
 .message-header + .message-body {
@@ -4956,7 +4956,7 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
   background: none;
   height: 40px;
   position: fixed;
-  right: 20px;
+  left: 20px;
   top: 20px;
   width: 40px;
 }
@@ -5000,7 +5000,7 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
 }
 
 .modal-card-foot .button:not(:last-child) {
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .modal-card-body {
@@ -5552,7 +5552,7 @@ html.has-navbar-fixed-bottom, body.has-navbar-fixed-bottom {
   height: 3.25rem;
   position: relative;
   width: 3.25rem;
-  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar-burger span {
@@ -5666,13 +5666,13 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
 }
 
 .navbar-link:not(.is-arrowless) {
-  padding-right: 2.5em;
+  padding-left: 2.5em;
 }
 
 .navbar-link:not(.is-arrowless)::after {
   border-color: #3273dc;
   margin-top: -0.375em;
-  right: 1.125em;
+  left: 1.125em;
 }
 
 .navbar-dropdown {
@@ -5835,12 +5835,12 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
 
   .navbar-start {
     justify-content: flex-start;
-    margin-right: auto;
+    margin-left: auto;
   }
 
   .navbar-end {
     justify-content: flex-end;
-    margin-left: auto;
+    margin-right: auto;
   }
 
   .navbar-dropdown {
@@ -5851,7 +5851,7 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
     box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
     display: none;
     font-size: 0.875rem;
-    left: 0;
+    right: 0;
     min-width: 100%;
     position: absolute;
     top: 100%;
@@ -5864,7 +5864,7 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
   }
 
   .navbar-dropdown a.navbar-item {
-    padding-right: 3rem;
+    padding-left: 3rem;
   }
 
   .navbar-dropdown a.navbar-item:focus, .navbar-dropdown a.navbar-item:hover {
@@ -5900,11 +5900,11 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
   }
 
   .navbar > .container .navbar-brand, .container > .navbar .navbar-brand {
-    margin-left: -0.75rem;
+    margin-right: -0.75rem;
   }
 
   .navbar > .container .navbar-menu, .container > .navbar .navbar-menu {
-    margin-right: -0.75rem;
+    margin-left: -0.75rem;
   }
 
   .navbar.is-fixed-bottom-desktop, .navbar.is-fixed-top-desktop {
@@ -6302,7 +6302,7 @@ a.navbar-item:focus, .navbar-link:focus, a.navbar-item:focus-within, .navbar-lin
 }
 
 .panel-block input[type="checkbox"] {
-  margin-right: 0.75em;
+  margin-left: 0.75em;
 }
 
 .panel-block > .control {
@@ -6346,7 +6346,7 @@ a.panel-block:hover, label.panel-block:hover {
   vertical-align: top;
   width: 1em;
   color: #7a7a7a;
-  margin-right: 0.75em;
+  margin-left: 0.75em;
 }
 
 .panel-icon .fa {
@@ -6420,11 +6420,11 @@ a.panel-block:hover, label.panel-block:hover {
 }
 
 .tabs .icon:first-child {
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .tabs .icon:last-child {
-  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .tabs.is-centered ul {
@@ -6437,7 +6437,7 @@ a.panel-block:hover, label.panel-block:hover {
 
 .tabs.is-boxed a {
   border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
+  border-radius: 0 0 4px 4px;
 }
 
 .tabs.is-boxed a:hover {
@@ -6471,17 +6471,17 @@ a.panel-block:hover, label.panel-block:hover {
 }
 
 .tabs.is-toggle li + li {
-  margin-left: -1px;
+  margin-right: -1px;
 }
 
 .tabs.is-toggle li:first-child a {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .tabs.is-toggle li:last-child a {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .tabs.is-toggle li.is-active a {
@@ -6496,15 +6496,15 @@ a.panel-block:hover, label.panel-block:hover {
 }
 
 .tabs.is-toggle.is-toggle-rounded li:first-child a {
-  border-bottom-left-radius: 290486px;
-  border-top-left-radius: 290486px;
-  padding-left: 1.25em;
-}
-
-.tabs.is-toggle.is-toggle-rounded li:last-child a {
   border-bottom-right-radius: 290486px;
   border-top-right-radius: 290486px;
   padding-right: 1.25em;
+}
+
+.tabs.is-toggle.is-toggle-rounded li:last-child a {
+  border-bottom-left-radius: 290486px;
+  border-top-left-radius: 290486px;
+  padding-left: 1.25em;
 }
 
 .tabs.is-small {
@@ -11438,7 +11438,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .hero-buttons .button:not(:last-child) {
-    margin-right: 1.5rem;
+    margin-left: 1.5rem;
   }
 }
 
