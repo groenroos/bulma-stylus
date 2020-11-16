@@ -67,7 +67,7 @@ $hero-colors ?= $colors
               border-color $color-invert
               color $color
       // Modifiers
-      if typeof($color) == 'rgba'
+      if typeof($color) == 'rgba' or typeof($color) == 'hsla'
         &.is-bold
           $gradient-top-left = bulma-stylus-darken(bulma-stylus-saturate(spin($color, -10deg), 10%), 10%)
           $gradient-bottom-right = bulma-stylus-lighten(bulma-stylus-saturate(spin($color, 10deg), 5%), 5%)
@@ -144,4 +144,4 @@ $hero-colors ?= $colors
 .hero-body
   flex-grow 1
   flex-shrink 0
-  padding 3rem 1.5rem
+  padding $hero-body-padding
