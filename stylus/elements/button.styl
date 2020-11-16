@@ -20,6 +20,7 @@ $button-active-color ?= $link-active
 $button-active-border-color ?= $link-active-border
 
 $button-text-color ?= $text
+$button-text-decoration ?= underline
 $button-text-hover-background-color ?= $background
 $button-text-hover-color ?= $text-strong
 
@@ -31,6 +32,8 @@ $button-disabled-opacity ?= 0.5
 $button-static-color ?= $text-light
 $button-static-background-color ?= $scheme-main-ter
 $button-static-border-color ?= $border
+
+$button-colors ?= $colors
 
 // The button sizes use mixins so they can be used at different breakpoints
 button-small()
@@ -70,11 +73,11 @@ button-large()
       height 1.5em
       width 1.5em
     &:first-child:not(:last-child)
-      margin-left "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width)
-      margin-right ($button-padding-horizontal / 4)
+      ltr-property("margin", "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width), false)
+      ltr-property("margin", ($button-padding-horizontal / 4))
     &:last-child:not(:first-child)
-      margin-left ($button-padding-horizontal / 4)
-      margin-right "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width)
+      ltr-property("margin", ($button-padding-horizontal / 4), false)
+      ltr-property("margin", "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width))
     &:first-child:last-child
       margin-left "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width)
       margin-right "calc(%s - %s)" % (-1 / 2 * $button-padding-horizontal $button-border-width)
@@ -114,7 +117,7 @@ button-large()
       background-color transparent
       border-color transparent
       box-shadow none
-  for $name, $pair in $colors
+  for $name, $pair in $button-colors
     $color = $pair['1']
     $color-invert = $pair['2']
     &.is-{$name}
@@ -268,7 +271,7 @@ button-large()
   .button
     margin-bottom 0.5rem
     &:not(:last-child):not(.is-fullwidth)
-      margin-right 0.5rem
+      ltr-property("margin", 0.5rem)
   &:last-child
     margin-bottom -0.5rem
   &:not(:last-child)
@@ -291,9 +294,9 @@ button-large()
       &:not(:last-child)
         border-bottom-right-radius 0
         border-top-right-radius 0
-        margin-right -1px
+        ltr-property("margin", -1px)
       &:last-child
-        margin-right 0
+        ltr-property("margin", 0)
       &:hover,
       &.is-hovered
         z-index 2

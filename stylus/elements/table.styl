@@ -23,6 +23,8 @@ $table-row-active-color ?= $primary-invert
 $table-striped-row-even-background-color ?= $scheme-main-bis
 $table-striped-row-even-hover-background-color ?= $scheme-main-ter
 
+$table-colors ?= $colors
+
 .table
   @extend $block
   background-color $table-background-color
@@ -34,7 +36,7 @@ $table-striped-row-even-hover-background-color ?= $scheme-main-ter
     padding $table-cell-padding
     vertical-align top
     // Colors
-    for $name, $pair in $colors
+    for $name, $pair in $table-colors
       $color = $pair['1']
       $color-invert = $pair['2']
       &.is-{$name}
@@ -51,10 +53,12 @@ $table-striped-row-even-hover-background-color ?= $scheme-main-ter
       a,
       strong
         color currentColor
+    &.is-vcentered
+      vertical-align: middle
   th
     color $table-cell-heading-color
     &:not([align])
-      text-align left
+      text-align inherit
   tr
     &.is-selected
       background-color $table-row-active-background-color
