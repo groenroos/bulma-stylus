@@ -1,8 +1,12 @@
-+typography-size($target = '')
-  for $size, $i in $sizes
-    $formatted-target = $target == '' ? '' : '-' + $target
-    .is-size-{$i}{$formatted-target}
-      font-size $size !important
+typography-size($target = false)
+  for $size in $sizes
+    $i = index($sizes, $size) + 1
+    if $target
+      .is-size-{$i}-{$target}
+        font-size $size !important
+    else
+      .is-size-{$i}
+        font-size $size !important
 
 typography-size()
 
