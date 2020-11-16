@@ -29,7 +29,7 @@
     "autoprefixer": "9.6.4",
     "clean-css-cli": "4.3.0",
     "postcss-cli": "^8.2.0",
-    "rimraf": "2.7.1",
+    "rimraf": "3.0.2",
     "stylelint": "^13.7.2",
     "stylus": "^0.54.7"
   },
