@@ -26,25 +26,21 @@
     "url": "https://github.com/groenroos/bulma-stylus/issues"
   },
   "devDependencies": {
-    "autoprefixer": "9.6.4",
+    "autoprefixer-stylus": "^1.0.0",
     "clean-css-cli": "4.3.0",
-    "postcss-cli": "^8.2.0",
-    "rimraf": "2.7.1",
-    "stylelint": "^13.7.2",
+    "rimraf": "3.0.2",
     "stylus": "^0.54.7"
   },
   "scripts": {
-    "build": "npm run build-stylus && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css && stylelint css/bulma.css --fix -q",
+    "build": "npm run build-stylus && npm run build-cleancss",
+    "build-stylus": "stylus bulma.styl --out css/bulma.css --sourcemap --use autoprefixer-stylus",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
-    "build-stylus": "stylus bulma.styl --out css --sourcemap",
     "clean": "rimraf css",
-    "rtl": "npm run rtl-stylus && npm run rtl-autoprefix && npm run rtl-cleancss",
-    "rtl-stylus": "stylus bulma-rtl.styl --out css --sourcemap",
-    "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css && stylelint css/bulma-rtl.css --fix -q",
+    "rtl": "npm run rtl-stylus && npm run rtl-cleancss",
+    "rtl-stylus": "stylus bulma-rtl.styl --out css/bulma-rtl.css --sourcemap --use autoprefixer-stylus",
     "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
     "deploy": "npm run clean && npm run build && npm run rtl",
-    "start": "stylus -w bulma.styl --out css"
+    "start": "stylus -w bulma.styl --out css/bulma.css --sourcemap --use autoprefixer-stylus"
   },
   "files": [
     "css",
