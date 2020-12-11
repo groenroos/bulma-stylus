@@ -78,15 +78,15 @@ $hero-colors ?= $colors
   // Sizes
   &.is-small
     .hero-body
-      padding: $hero-body-padding-small
+      padding $hero-body-padding-small
   &.is-medium
-    +tablet
+    +tablet()
       .hero-body
-        padding: $hero-body-padding-medium
+        padding $hero-body-padding-medium
   &.is-large
-    +tablet
+    +tablet()
       .hero-body
-        padding: $hero-body-padding-large
+        padding $hero-body-padding-large
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar
