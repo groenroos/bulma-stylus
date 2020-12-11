@@ -10353,11 +10353,15 @@ a.has-text-danger-dark:focus {
 .hero.is-small .hero-body {
   padding: 1.5rem;
 }
-.hero.is-medium +tablet .hero-body {
-  padding: 9rem 1.5rem;
+@media screen and (min-width: 769px), print {
+  .hero.is-medium .hero-body {
+    padding: 9rem 1.5rem;
+  }
 }
-.hero.is-large +tablet .hero-body {
-  padding: 18rem 1.5rem;
+@media screen and (min-width: 769px), print {
+  .hero.is-large .hero-body {
+    padding: 18rem 1.5rem;
+  }
 }
 .hero.is-halfheight .hero-body,
 .hero.is-fullheight .hero-body,
