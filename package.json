@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "autoprefixer-stylus": "^1.0.0",
-    "clean-css-cli": "4.3.0",
+    "clean-css-cli": "5.3.2",
     "rimraf": "3.0.2",
     "stylus": "^0.54.7"
   },
